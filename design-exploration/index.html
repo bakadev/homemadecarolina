@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homemade Carolina · Design Variant Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,300..900&family=Caveat:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&family=Homemade+Apple&display=swap" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; background: #F4F2EF; color: #0E0E0E; }
+  .display-fraunces { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144; }
+  .script-caveat { font-family: 'Caveat', cursive; }
+  .display-space { font-family: 'Space Grotesk', sans-serif; }
+  .italic-instrument { font-family: 'Instrument Serif', serif; font-style: italic; }
+  .display-bricolage { font-family: 'Bricolage Grotesque', sans-serif; }
+  .hand-apple { font-family: 'Homemade Apple', cursive; }
+
+  .swatch { width: 36px; height: 36px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
+
+  .tag { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="border-b border-black/10 bg-white">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-8 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <img src="logo.png" alt="" class="h-12 w-12" />
+      <div>
+        <p class="tag text-pink-600">Design Exploration</p>
+        <h1 class="text-2xl font-semibold mt-1">Homemade Carolina · 3 Variants</h1>
+      </div>
+    </div>
+    <div class="text-right text-sm">
+      <p class="text-black/60">Direction: <strong class="text-black">Playful Crafted</strong></p>
+      <p class="text-black/40 mt-1">Pick one (or mix) — feeds Tasks 5–6 of the implementation plan</p>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 sm:px-10 py-10">
+
+<!-- How to use -->
+<section class="mb-10 rounded-xl bg-white p-6 border border-black/5">
+  <h2 class="text-base font-semibold">How to compare</h2>
+  <ol class="mt-3 grid sm:grid-cols-3 gap-x-8 gap-y-2 text-sm text-black/70 list-decimal list-inside">
+    <li>Look at the hero shot for typography + color feel</li>
+    <li>Click <em>Open full prototype</em> to scroll all 6 sections</li>
+    <li>Note variant + any tweaks (other pink hue, swap one font, etc.)</li>
+  </ol>
+  <p class="mt-3 text-xs text-black/50 italic">All three use the same content + section structure — only typography, color, and decoration tone differ. Photo placeholders are intentional gradients (per spec); real product photos drop into <code>/public/gallery/</code> after launch.</p>
+</section>
+
+<!-- Variant cards -->
+<section class="grid lg:grid-cols-3 gap-6">
+
+  <!-- VARIANT A -->
+  <article class="rounded-xl overflow-hidden bg-white border border-black/5 shadow-sm flex flex-col">
+    <a href="variant-a-studio-note.html" class="block group" target="_blank" rel="noreferrer">
+      <img src="screenshots/variant-a-hero.png" alt="Variant A hero preview" class="w-full aspect-[16/10] object-cover object-top group-hover:opacity-95 transition" />
+    </a>
+    <div class="p-6 flex flex-col flex-1">
+      <div class="flex items-baseline justify-between">
+        <p class="tag text-pink-600">Variant A</p>
+        <span class="text-xs text-black/40">Studio Note</span>
+      </div>
+      <h3 class="display-fraunces mt-2 text-3xl">Editorial workshop</h3>
+      <p class="mt-3 text-sm text-black/70 leading-relaxed">Big serif display, generous whitespace, script accent for warmth. Reads as <em>artisan, premium, considered</em> — a craft magazine that ships product.</p>
+
+      <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+        <div>
+          <p class="tag text-black/50 mb-1.5">Display</p>
+          <p class="display-fraunces text-2xl leading-none">Fraunces</p>
+        </div>
+        <div>
+          <p class="tag text-black/50 mb-1.5">Accent</p>
+          <p class="script-caveat text-2xl leading-none text-pink-600">Caveat</p>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <p class="tag text-black/50 mb-2">Palette</p>
+        <div class="flex items-center gap-2">
+          <div class="swatch" style="background: #FAF7F2;"></div>
+          <div class="swatch" style="background: #1a1310;"></div>
+          <div class="swatch" style="background: #EC4899;"></div>
+          <span class="text-[10px] text-black/40 ml-2">cream · ink · hot-pink</span>
+        </div>
+      </div>
+
+      <div class="mt-5 text-xs text-black/60 space-y-1">
+        <p><span class="text-pink-600">·</span> Headline: "Made by <em class="script-caveat text-pink-600 text-lg leading-none">hand</em>. Made for you."</p>
+        <p><span class="text-pink-600">·</span> Vibe: Kinfolk, gallery, Etsy boutique</p>
+        <p><span class="text-pink-600">·</span> Best for: weddings, wellness, premium commissions</p>
+      </div>
+
+      <div class="mt-auto pt-6">
+        <a href="variant-a-studio-note.html" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-sm hover:bg-pink-600 transition">
+          Open full prototype
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- VARIANT B -->
+  <article class="rounded-xl overflow-hidden bg-white border border-black/5 shadow-sm flex flex-col">
+    <a href="variant-b-boutique-tag.html" class="block group" target="_blank" rel="noreferrer">
+      <img src="screenshots/variant-b-hero.png" alt="Variant B hero preview" class="w-full aspect-[16/10] object-cover object-top group-hover:opacity-95 transition" />
+    </a>
+    <div class="p-6 flex flex-col flex-1">
+      <div class="flex items-baseline justify-between">
+        <p class="tag" style="color: #C77389;">Variant B</p>
+        <span class="text-xs text-black/40">Boutique Tag</span>
+      </div>
+      <h3 class="display-space mt-2 text-3xl font-medium tracking-tight">Modern boutique</h3>
+      <p class="mt-3 text-sm text-black/70 leading-relaxed">Clean grotesk display + refined italic serif accent. Sharp grid with subtle asymmetric splash. Reads as <em>polished, modern, intentional</em> — a confident small brand.</p>
+
+      <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+        <div>
+          <p class="tag text-black/50 mb-1.5">Display</p>
+          <p class="display-space text-2xl font-medium leading-none">Space Grotesk</p>
+        </div>
+        <div>
+          <p class="tag text-black/50 mb-1.5">Accent</p>
+          <p class="italic-instrument text-2xl leading-none" style="color: #C77389;">Instrument Serif</p>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <p class="tag text-black/50 mb-2">Palette</p>
+        <div class="flex items-center gap-2">
+          <div class="swatch" style="background: #FFFFFF;"></div>
+          <div class="swatch" style="background: #0a0a0a;"></div>
+          <div class="swatch" style="background: #E8A4B4;"></div>
+          <span class="text-[10px] text-black/40 ml-2">white · ink · dusty-rose</span>
+        </div>
+      </div>
+
+      <div class="mt-5 text-xs text-black/60 space-y-1">
+        <p><span style="color: #C77389;">·</span> Headline: "Small batch. Big <em class="italic-instrument" style="color: #C77389;">love</em>."</p>
+        <p><span style="color: #C77389;">·</span> Vibe: Aesop, Notion-clean, modern boutique</p>
+        <p><span style="color: #C77389;">·</span> Best for: established small biz, polished branding work</p>
+      </div>
+
+      <div class="mt-auto pt-6">
+        <a href="variant-b-boutique-tag.html" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-sm bg-black text-white px-5 py-2.5 text-sm transition" style="--hover: #C77389;" onmouseover="this.style.background='#C77389'" onmouseout="this.style.background='black'">
+          Open full prototype
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- VARIANT C -->
+  <article class="rounded-xl overflow-hidden bg-white border border-black/5 shadow-sm flex flex-col">
+    <a href="variant-c-maker-marquee.html" class="block group" target="_blank" rel="noreferrer">
+      <img src="screenshots/variant-c-hero.png" alt="Variant C hero preview" class="w-full aspect-[16/10] object-cover object-top group-hover:opacity-95 transition" />
+    </a>
+    <div class="p-6 flex flex-col flex-1">
+      <div class="flex items-baseline justify-between">
+        <p class="tag" style="color: #FF1F8F;">Variant C</p>
+        <span class="text-xs text-black/40">Maker Marquee</span>
+      </div>
+      <h3 class="display-bricolage mt-2 text-3xl font-bold tracking-tight">Bold indie maker</h3>
+      <p class="mt-3 text-sm text-black/70 leading-relaxed">Dark hero, big variable display, pencil-sketch script. Marquee tickers and tilted photos. Reads as <em>exuberant, personal, unapologetic</em> — an indie brand with personality.</p>
+
+      <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+        <div>
+          <p class="tag text-black/50 mb-1.5">Display</p>
+          <p class="display-bricolage text-2xl font-bold leading-none">Bricolage</p>
+        </div>
+        <div>
+          <p class="tag text-black/50 mb-1.5">Accent</p>
+          <p class="hand-apple text-2xl leading-none" style="color: #FF1F8F;">Homemade Apple</p>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <p class="tag text-black/50 mb-2">Palette</p>
+        <div class="flex items-center gap-2">
+          <div class="swatch" style="background: #FFFFFF;"></div>
+          <div class="swatch" style="background: #0E0E0E;"></div>
+          <div class="swatch" style="background: #FF1F8F;"></div>
+          <span class="text-[10px] text-black/40 ml-2">white · off-black · neon-pink</span>
+        </div>
+      </div>
+
+      <div class="mt-5 text-xs text-black/60 space-y-1">
+        <p><span style="color: #FF1F8F;">·</span> Headline: "Your idea, <em class="hand-apple" style="color: #FF1F8F;">made</em> real."</p>
+        <p><span style="color: #FF1F8F;">·</span> Vibe: streetwear merch, indie record label, bold maker</p>
+        <p><span style="color: #FF1F8F;">·</span> Best for: confident personal brand, vendor-fair-friendly</p>
+      </div>
+
+      <div class="mt-auto pt-6">
+        <a href="variant-c-maker-marquee.html" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold uppercase tracking-wider transition" style="background: #FF1F8F; color: white;" onmouseover="this.style.background='black'" onmouseout="this.style.background='#FF1F8F'">
+          Open full prototype
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- Side-by-side full pages -->
+<section class="mt-16">
+  <h2 class="text-xl font-semibold">Full-page comparison</h2>
+  <p class="text-sm text-black/60 mt-1">Scroll-through of all 6 sections (Hero, Services, Gallery, Testimonials, About, Contact).</p>
+  <div class="mt-6 grid lg:grid-cols-3 gap-4">
+    <a href="screenshots/variant-a-full.png" target="_blank" class="block group">
+      <p class="tag text-black/60 mb-2">Variant A · Studio Note</p>
+      <img src="screenshots/variant-a-full.png" alt="Variant A full page" class="w-full rounded-lg border border-black/5 shadow-sm group-hover:shadow-lg transition" />
+    </a>
+    <a href="screenshots/variant-b-full.png" target="_blank" class="block group">
+      <p class="tag text-black/60 mb-2">Variant B · Boutique Tag</p>
+      <img src="screenshots/variant-b-full.png" alt="Variant B full page" class="w-full rounded-lg border border-black/5 shadow-sm group-hover:shadow-lg transition" />
+    </a>
+    <a href="screenshots/variant-c-full.png" target="_blank" class="block group">
+      <p class="tag text-black/60 mb-2">Variant C · Maker Marquee</p>
+      <img src="screenshots/variant-c-full.png" alt="Variant C full page" class="w-full rounded-lg border border-black/5 shadow-sm group-hover:shadow-lg transition" />
+    </a>
+  </div>
+</section>
+
+<!-- What to decide -->
+<section class="mt-16 rounded-xl bg-white p-7 border border-black/5">
+  <h2 class="text-base font-semibold">After you pick</h2>
+  <p class="text-sm text-black/70 mt-2 leading-relaxed">Reply with the variant letter (A / B / C), the headline you want, and any tweaks. Common tweaks:</p>
+  <ul class="mt-3 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-black/70">
+    <li>· Different pink hue (warmer / cooler / more saturated)</li>
+    <li>· Swap one font from a different variant</li>
+    <li>· Different headline (mix &amp; match the three options)</li>
+    <li>· More or less motion/decoration</li>
+    <li>· Cream vs pure white background</li>
+    <li>· Different feel for one specific section</li>
+  </ul>
+  <p class="mt-4 text-sm text-black/70">Once locked, the chosen tokens (pink hex, font families, background) feed into <strong>Task 5</strong> and <strong>Task 6</strong> of the implementation plan, then build proceeds through Phases 3–9.</p>
+</section>
+
+<!-- Notes -->
+<section class="mt-10 text-sm text-black/60 grid sm:grid-cols-2 gap-6">
+  <div class="rounded-lg border border-amber-300/60 bg-amber-50 p-5">
+    <p class="text-amber-900 font-semibold">Logo recommendation</p>
+    <p class="mt-2 text-amber-900/80 leading-relaxed">The current 500×500 line-art PNG works beautifully at footer/hero size, but at small header sizes the thin strokes go sub-pixel. <strong>Recommend: provide an SVG version</strong> (or a wordmark-only variant) so the header can scale cleanly. For now the variants pair the icon + a styled text wordmark.</p>
+  </div>
+  <div class="rounded-lg border border-black/10 bg-white p-5">
+    <p class="text-black font-semibold">Placeholder strategy</p>
+    <p class="mt-2 text-black/70 leading-relaxed">All product/photo placeholders are intentional gradients in each variant's pink. This is the launch-day default per spec — drop real photos into <code>/public/gallery/&lt;category&gt;/</code> and the manifest auto-populates.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-black/10 mt-16 py-10 bg-white">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between text-xs text-black/50">
+    <p>Design exploration · 2026-05-03 · Spec §10</p>
+    <p>Built with huashu-design + shadcn primitives</p>
+  </div>
+</footer>
+
+</body>
+</html>
