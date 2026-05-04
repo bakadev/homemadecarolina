@@ -14,6 +14,7 @@
   --color-pink-soft: #fbd5e5; /* soft fill for hover/accents */
   --color-muted: #7a6e66; /* body muted variant */
   --color-rule: #d9d2c7; /* hairline rules / card borders */
+  --color-muted-soft: #e8e3da; /* warm soft fill — slightly cooler than rule */
 
   /* Fonts — see Task 6 */
   --font-display: "Fraunces", ui-serif, serif;
@@ -50,7 +51,6 @@ html {
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
