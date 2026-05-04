@@ -4,21 +4,25 @@
 
 **Goal:** Build the Homemade Carolina single-page marketing site (Vite + React 18 + TypeScript + Tailwind v4 + shadcn/ui + Framer Motion) per the approved spec at `docs/superpowers/specs/2026-05-03-homemade-carolina-design.md`.
 
+**Visual reference:** The HTML prototype at `design-exploration/variant-a-studio-note.html` is the authoritative visual reference — typography, spacing, color usage, asymmetric stagger, scribble underline, hero collage tilt, gallery filter behavior, etc. Open it side-by-side while implementing each section.
+
 **Architecture:** Static-site React SPA prerendered with `vite-react-ssg` for SEO. Six on-page sections (Hero, Services, Gallery, Testimonials, About, Contact) with sticky header + persistent footer. Gallery images come from a build-time-generated manifest that scans `/public/gallery/<category>/`. Motion via Framer Motion with strict `prefers-reduced-motion` honoring. Local SEO via JSON-LD `LocalBusiness` schema for Belmont, NC.
 
 **Tech Stack:** pnpm · Vite 6 · React 18 · TypeScript (strict) · Tailwind CSS v4 (CSS-first `@theme`) · shadcn/ui · Framer Motion · lucide-react · vite-react-ssg · Vitest + @testing-library/react · ESLint · Prettier
 
 ---
 
-## Phase 0 — Pre-execution: Design exploration handoff
+## Phase 0 — Design exploration: COMPLETED 2026-05-03
 
-Before executing the tasks below, the design exploration described in spec §10 happens out-of-band:
+Three Playful-Crafted variants built as HTML hi-fi prototypes in `design-exploration/`. Carina selected **Variant A · Studio Note** with these tweaks:
+- Headline switched to "Small batch. Big *love*." (*love* in Caveat script + pink scribble)
+- Subhead from Variant B's product-listing copy
+- Personal Commissions card widened to span 2 columns
+- "Made by hand" mentions reduced to one (in About)
+- Real placeholder photos added to `public/gallery/` and `photos/about.jpeg`
+- Gallery filter chips functional (verified via Playwright)
 
-1. Use **huashu-design** + **shadcn MCP** to generate three Playful-Crafted variants as HTML hi-fi prototypes (Studio Note, Boutique Tag, Maker Marquee).
-2. Carina selects a variant and any tweaks (final pink hue, exact font pairing, headline choice).
-3. The chosen design tokens become the inputs for **Task 5 (theme tokens)** and **Task 6 (typography)** below.
-
-The plan below uses **placeholder design tokens** (clearly marked as `DESIGN_TOKEN:`) where the chosen-variant value plugs in. The build is functional with the placeholders so the developer is never blocked.
+The HTML prototype `design-exploration/variant-a-studio-note.html` is the visual reference for the React build. Locked design tokens flow into Tasks 5 and 6 below.
 
 ---
 
@@ -489,73 +493,92 @@ git commit -m "chore: add Framer Motion, lucide, shadcn primitives, path alias"
 
 ## Phase 2 — Design Tokens & Typography
 
-### Task 5: Apply chosen variant's color tokens
+### Task 5: Apply Variant A's locked color tokens
 
 **Files:**
 - Modify: `src/index.css`
 
-This task happens **after** the design exploration phase locks the chosen variant. Until then, the placeholder values from Task 2 are sufficient to develop against.
+- [ ] **Step 1: Replace placeholder color tokens with Variant A's locked hex values**
 
-- [ ] **Step 1: Replace the `DESIGN_TOKEN:` color values with the chosen variant's hex codes**
-
-Edit the `@theme` block in `src/index.css`. Replace `--color-pink` (and any tonal background tokens) with the values from the chosen variant. Example (final values determined by chosen variant):
+Edit the `@theme` block in `src/index.css` so it reads:
 ```css
---color-pink: #EC4899;       /* chosen value */
---color-pink-soft: #FBCFE8;  /* tint for soft accents */
---color-paper: #FFFFFF;      /* or #FAF7F2 if Studio Note */
---color-ink: #0E0E0E;        /* or pure #000 if not Maker Marquee */
+@theme {
+  /* Brand colors — Variant A · Studio Note (locked 2026-05-03) */
+  --color-ink: #1a1310;          /* warm off-black */
+  --color-paper: #FAF7F2;        /* warm cream */
+  --color-paper-2: #F2EDE4;      /* alt section background */
+  --color-pink: #EC4899;         /* hot-pink accent */
+  --color-pink-soft: #FBD5E5;    /* soft fill for hover/accents */
+  --color-muted: #7A6E66;        /* body muted variant */
+  --color-rule: #D9D2C7;         /* hairline rules / card borders */
+
+  /* Fonts — see Task 6 */
+  --font-display: "Fraunces", ui-serif, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Caveat", cursive;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
 ```
 
-- [ ] **Step 2: Verify color contrast for `text-pink` on `bg-paper`**
+- [ ] **Step 2: Verify contrast against the Variant A reference**
 
-Run a contrast check (e.g., paste hex into https://webaim.org/resources/contrastchecker/). For body text the pink-on-paper pair must hit ≥ 4.5:1; if it fails, use `text-pink` only for large headings or interactive elements where 3:1 is acceptable, and use `text-ink` for body. Document any deviation in `README.md`.
+Open `design-exploration/variant-a-studio-note.html` in a browser side-by-side with `pnpm dev`. Confirm:
+- Pink `#EC4899` on cream `#FAF7F2` looks like the prototype (used for CTAs, eyebrow, script accent — not body text)
+- Body text uses `--color-ink` (`#1a1310`) on `--color-paper` — strong contrast
+- Muted text uses `--color-muted` (`#7A6E66`) on `--color-paper` — sufficient at 16px+
+
+If the pink fails ≥ 4.5:1 against any text usage, route that surface to ink instead. The prototype only uses pink for: CTAs (white-on-pink, fine), small accents (large enough), and the script word (decorative + ≥ 3:1 for graphic objects).
 
 - [ ] **Step 3: Commit**
 
 ```bash
 git add src/index.css
-git commit -m "feat(theme): apply chosen variant's color tokens"
+git commit -m "feat(theme): apply Variant A color tokens"
 ```
 
 ---
 
-### Task 6: Wire Google Fonts for the chosen typography pairing
+### Task 6: Wire Google Fonts (Variant A · Studio Note pairing)
 
 **Files:**
 - Modify: `index.html`, `src/index.css`
 
-- [ ] **Step 1: Pick the Google Fonts link tags for the chosen variant**
+- [ ] **Step 1: Add preconnect + stylesheet links to `index.html`**
 
-For each variant the link tags would be:
-- **Studio Note:** `family=Fraunces:wght@400;600;800&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap`
-- **Boutique Tag:** `family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600&display=swap`
-- **Maker Marquee:** `family=Bricolage+Grotesque:wght@400;700;900&family=Homemade+Apple&family=Inter:wght@400;500;600&display=swap`
-
-- [ ] **Step 2: Add the preconnect + stylesheet links to `index.html`**
-
-In `<head>`, before any other resource:
+In `<head>`, before any other style/script resource:
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?<chosen family string>" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap" />
 ```
 
-- [ ] **Step 3: Update font tokens in `src/index.css`**
+- [ ] **Step 2: Confirm font tokens in `src/index.css` match Task 5**
 
-Set `--font-display`, `--font-body`, `--font-script` to the chosen families with appropriate fallbacks.
+The `@theme` block from Task 5 already declares `--font-display: "Fraunces", ...`, `--font-body: "Inter", ...`, `--font-script: "Caveat", ...`. Verify they are present and correctly named.
+
+- [ ] **Step 3: Add Fraunces variable-axis utilities to `src/index.css`**
+
+Append below the `@theme` block:
+```css
+.font-display { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 30; }
+.font-display-tight { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: -0.02em; }
+.font-script { font-family: var(--font-script); }
+```
+(These mirror the prototype's two Fraunces flavors — soft optical for warm headlines, tight optical for the secondary line.)
 
 - [ ] **Step 4: Boot dev server, verify fonts load**
 
 ```bash
 pnpm dev
 ```
-Open http://localhost:5173, open DevTools Network tab, reload, confirm `fonts.googleapis.com` returns 200 and the heading renders in the chosen display font. Stop the server.
+Open http://localhost:5173. In DevTools → Network tab, filter `fonts`. Confirm a `200` response from `fonts.googleapis.com` and the family CSS pulls woff2 files. The placeholder heading should render in Fraunces. Stop the server.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add index.html src/index.css
-git commit -m "feat(theme): wire Google Fonts for chosen variant"
+git commit -m "feat(theme): wire Fraunces + Caveat + Inter (Variant A)"
 ```
 
 ---
@@ -1682,20 +1705,19 @@ git commit -m "feat(layout): footer"
 **Files:**
 - Create: `src/content/hero.ts`, `src/content/services.ts`, `src/content/testimonials.ts`, `src/content/about.ts`, `src/content/contact.ts`
 
-- [ ] **Step 1: Hero copy**
+- [ ] **Step 1: Hero copy (per Variant A choice)**
 
 ```ts
 // src/content/hero.ts
 export const HERO = {
-  eyebrow: "Belmont, NC · Made by hand",
-  // Default headline; alternates listed for easy swap.
-  headline: { lead: "Made by hand.", scriptWord: "hand", trail: "Made for you." },
-  alternates: [
-    { lead: "Small batch.", scriptWord: "Big", trail: "Big love." },
-    { lead: "Your idea,", scriptWord: "made", trail: "made real." },
-  ],
+  eyebrow: "Belmont, NC · Small batch",
+  // Headline structure: lead + script-accent word + trail.
+  // The script word renders in Caveat with a pink scribble underline.
+  headline: { lead: "Small batch.", lead2: "Big", scriptWord: "love", trail: "." },
   subhead:
-    "Small-batch custom apparel, drinkware, signs, and gifts — printed, cut, and engraved in Belmont, NC.",
+    "Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the people you love. Small-batch, from Belmont, NC.",
+  italicNote:
+    "Personal commissions and small-business branding since the vendor-fair days.",
   ctas: { primary: "Get a quote", secondaryLabel: "or call" },
 };
 ```
@@ -1982,10 +2004,15 @@ import { GALLERY } from "@/data/gallery.generated";
 export function ServiceCard({ service, index }: { service: ServiceCategory; index: number }) {
   const previews =
     GALLERY.find((g) => g.category === service.slug)?.images.slice(0, 3) ?? [];
+  // Per Variant A: card #5 (Personal Commissions, slug "commissions") spans 2
+  // columns at md+ to match the prototype's wide layout.
+  const isWide = service.slug === "commissions";
   return (
     <Card
       className={`group relative overflow-hidden border-muted-soft/60 transition-transform duration-200 hover:-translate-y-1 ${
-        index % 2 === 0 ? "md:translate-y-0" : "md:translate-y-8"
+        isWide ? "md:col-span-2 lg:col-span-2" : ""
+      } ${
+        !isWide && index % 2 === 1 ? "md:translate-y-8" : "md:translate-y-0"
       }`}
     >
       <CardContent className="p-6">

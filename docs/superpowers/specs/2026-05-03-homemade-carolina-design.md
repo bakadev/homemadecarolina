@@ -132,10 +132,13 @@ Sticky header with brand wordmark + anchor nav + phone CTA. Scroll-progress bar 
 
 ## 7. Content (drafts)
 
-### Hero headline candidates (pick during design exploration)
-1. **"Made by hand. Made for you."** — *"hand"* in script with pink underline scribble. Subhead: *Small-batch custom apparel, drinkware, signs, and gifts — printed, cut, and engraved in Belmont, NC.*
-2. **"Small batch. Big love."** — Subhead: *Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the people you love.*
-3. **"Your idea, made real."** — Subhead: *Custom apparel, drinkware, signage, and gifts — small-batch, hand-finished, shipped from the Carolinas.*
+### Hero headline (chosen)
+
+**"Small batch. Big *love*."** — *love* set in Caveat script with hot-pink scribble underline.
+
+Subhead: *Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the people you love. Small-batch, from Belmont, NC.*
+
+Eyebrow: `BELMONT, NC · SMALL BATCH`
 
 ### Service blurbs and technique badges
 See table in §3 → Services.
@@ -146,24 +149,42 @@ See draft in §3 → About.
 ### Testimonial placeholders
 - Three placeholder quotes attributed to "Future Happy Client" or similar — clearly marked so they aren't shipped to production unedited.
 
-## 8. Visual Design Direction — "Playful Crafted"
+## 8. Visual Design Direction — "Playful Crafted" → **Variant A · Studio Note (selected)**
 
-Approved direction. Personal, warm, made-by-a-human feel. Display sans paired with a tasteful script/handwritten accent for select words. Asymmetric layouts. Pink as a warm splash, not a corporate stamp. Optional subtle paper-grain texture.
+Approved direction. Personal, warm, made-by-a-human feel. Big serif display paired with a script accent for select words. Asymmetric layouts. Hot-pink as a warm splash, not a corporate stamp. Cream background for warmth.
 
-### Brand colors
-- **Black** (foreground / type / inverse surfaces) — variants may use a slightly tonal off-black (e.g., `#0E0E0E`) for visual warmth
-- **White** (default surface) — variants may use a tonal off-white/cream (e.g., `#FAF7F2`) for warmth
-- **Pink** (accent — exact hue chosen during design exploration; explored across hot-pink, dusty-rose, and neon-pink in variants)
-- The black/white/pink brand identity is strict; tonal warmth is a stylistic refinement, not a brand color expansion
+### Brand colors (locked tokens)
 
-### Typography
-- Stick to **Google Fonts** only
-- Recommendation deferred to design exploration; three pairings will be presented as variants (see §10)
+| Token | Hex | Role |
+|---|---|---|
+| `--color-ink` | `#1a1310` | Warm off-black; foreground/type/inverse surfaces |
+| `--color-paper` | `#FAF7F2` | Warm cream; default surface |
+| `--color-paper-2` | `#F2EDE4` | Slightly deeper cream; alt section background |
+| `--color-pink` | `#EC4899` | Hot-pink accent; CTAs, scribble underline, eyebrow |
+| `--color-pink-soft` | `#FBD5E5` | Pink tint; hover states, soft fills |
+| `--color-muted` | `#7A6E66` | Body-text muted variant |
+| `--color-rule` | `#D9D2C7` | Hairline rules, card borders |
+
+The strict B/W/pink brand identity is honored — these are the tonal-warm refinements, not new brand colors.
+
+### Typography (locked, all Google Fonts)
+
+| Role | Family | Weights / Axes |
+|---|---|---|
+| Display (headlines) | **Fraunces** | variable, `opsz 9..144`, `wght 300..900`, `SOFT 0..100` |
+| Script accent (love, hand, Carolina, etc.) | **Caveat** | `400`, `700` |
+| Body text | **Inter** | `400`, `500`, `600` |
+
+Google Fonts link:
+```
+https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap
+```
 
 ### Logo
-- Logo file already in repo at `brand-assets/logo.png`
-- Use it in the sticky header and footer; build a `<Logo>` component that accepts size + variant props so light/dark backgrounds can be supported
-- If the existing PNG isn't ideal for all surfaces (e.g., needs an inverted version, an SVG, or a wordmark-only treatment), flag during design exploration and request alternates from Carina
+- File: `brand-assets/logo.png` (existing 500×500 PNG line illustration, also copied to `public/logo.png`)
+- **Header treatment**: paired icon (`h-9 w-9`) + styled text wordmark — `Homemade <Caveat-script-pink>Carolina</>` — because the line strokes go sub-pixel below ~80px
+- **Footer treatment**: full logo at `h-24` (works at this size)
+- **Open item flagged**: provide an SVG version so the line-art can scale cleanly to small header sizes; until then, the icon+text wordmark hybrid is the live treatment
 
 ## 9. Motion Plan ("polished + tasteful")
 
@@ -205,15 +226,21 @@ Approved direction. Personal, warm, made-by-a-human feel. Display sans paired wi
 **Page-load polish**
 - 400ms pink wipe panel slides off the screen, revealing hero (skipped on reduced motion)
 
-## 10. Design Exploration Handoff
+## 10. Design Exploration — Completed (2026-05-03)
 
-After this spec and the implementation plan are locked, generate **3 visual variants** within the Playful Crafted direction using **huashu-design** + **shadcn MCP**, each as a working HTML hi-fi prototype:
+Three variants generated as standalone HTML hi-fi prototypes in `design-exploration/`:
+- Variant A — Studio Note (Fraunces + Caveat, cream, hot-pink) — **SELECTED**
+- Variant B — Boutique Tag (Space Grotesk + Instrument Serif Italic, white, dusty-rose)
+- Variant C — Maker Marquee (Bricolage Grotesque + Homemade Apple, off-black hero, neon-pink)
 
-- **Variant A — "Studio Note"** — *Fraunces* (display) + *Caveat* (script accent), warm cream background, hot-pink accent
-- **Variant B — "Boutique Tag"** — *General Sans* / *Space Grotesk* + *Instrument Serif Italic* accent, pure white background, dusty-rose pink
-- **Variant C — "Maker Marquee"** — *Bricolage Grotesque* / *Familjen Grotesk* + *Homemade Apple* / *Shadows Into Light* accent, off-black hero background option, neon-pink accent
+**Carina's tweaks (already applied to the live Variant A):**
+- Headline switched to **"Small batch. Big *love*."** (Variant B's headline, with *love* in Caveat script + pink scribble underline) — Variant B's product-listing subhead also adopted
+- Personal Commissions service card widened to **`md:col-span-2 lg:col-span-2`** (Variant B's pattern)
+- "Made by hand" mentions reduced to a single use in About copy (brand essence)
+- Gallery filter chips wired to functional vanilla-JS toggle (verified via Playwright: All=8, Apparel=2, Drinkware=2, Signs=2, Gifts=2)
+- Real placeholder photos integrated into hero collage, service cards, gallery, and About portrait
 
-Each variant uses shadcn/ui primitives so the chosen variant drops into the Vite app cleanly. Carina picks a variant + any tweak (color, font, tone), and the chosen tokens are codified into the Tailwind theme.
+The locked tokens in §8 reflect these final choices. The HTML prototype at `design-exploration/variant-a-studio-note.html` is the visual reference for the React build.
 
 ## 11. Open Items (to confirm at build time, not blocking)
 

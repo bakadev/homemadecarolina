@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npx --version)",
+      "Bash(npx playwright *)",
+      "Bash(file public/gallery/*.jpg photos/about.jpeg)",
+      "Bash(node test-filter.mjs)",
+      "Bash(npm install *)"
+    ]
+  }
+}
