@@ -7,11 +7,13 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
 import { SkipToContent } from "@/components/layout/skip-to-content";
+import { SeoJsonLd } from "@/components/seo-jsonld";
 
 export default function App() {
   return (
     <>
       <SkipToContent />
+      <SeoJsonLd />
       <Header />
       <main id="main">
         <Hero />
