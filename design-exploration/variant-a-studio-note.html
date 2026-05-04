@@ -59,6 +59,11 @@ tailwind.config = {
       radial-gradient(circle at 70% 70%, rgba(26,19,16,0.04), transparent 50%);
   }
 
+  /* Real-photo tile — uses <img> inside */
+  .tile { position: relative; overflow: hidden; isolation: isolate; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .tile:hover img { transform: scale(1.03); }
+
   /* Pink scribble underline */
   .scribble { position: relative; display: inline-block; }
   .scribble svg { position: absolute; left: -4%; right: -4%; bottom: -10px; width: 108%; height: 14px; pointer-events: none; }
@@ -97,12 +102,31 @@ tailwind.config = {
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   }
 
-  /* Marquee for services intro */
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .marquee-track { animation: marquee 30s linear infinite; }
+  /* Filter chips */
+  .chip {
+    padding: 8px 18px; font-size: 14px; border-radius: 999px;
+    border: 1px solid #D9D2C7; background: transparent; color: #1a1310;
+    transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer;
+  }
+  .chip:hover { background: #FBD5E5; border-color: #FBD5E5; }
+  .chip.is-active { background: #EC4899; color: #FAF7F2; border-color: #EC4899; }
+  .chip.is-active:hover { background: #EC4899; }
+
+  /* Gallery tile category overlay */
+  .gallery-tile { position: relative; overflow: hidden; isolation: isolate; }
+  .gallery-tile .cat-tag {
+    position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 999px;
+    background: #EC4899; color: #FAF7F2; font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 500; opacity: 0; transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .gallery-tile:hover .cat-tag { opacity: 1; }
+
+  /* Hidden tile state (filter) */
+  .gallery-tile[hidden] { display: none; }
 
   @media (prefers-reduced-motion: reduce) {
-    .float1, .float2, .float3, .marquee-track, .rise { animation: none !important; }
+    .float1, .float2, .float3, .rise { animation: none !important; }
   }
 </style>
 </head>
@@ -140,19 +164,19 @@ tailwind.config = {
 <section class="relative pt-16 md:pt-24 pb-24">
   <div class="max-w-6xl mx-auto px-6 sm:px-8 grid md:grid-cols-12 gap-10 md:gap-14 items-center">
     <div class="md:col-span-7">
-      <p class="eyebrow text-pink rise">Belmont, NC · Made by hand</p>
-      <h1 class="display mt-5 leading-[1.02] text-[2.6rem] md:text-[5.2rem] rise d1">
-        Made by
+      <p class="eyebrow text-pink rise">Belmont, NC · Small batch</p>
+      <h1 class="display mt-5 leading-[1.02] text-[2.6rem] md:text-[5.4rem] rise d1">
+        Small batch.<br/>
+        Big
         <span class="scribble">
-          <span class="script font-bold text-pink text-[3.2rem] md:text-[6rem] inline-block leading-none">hand</span>
+          <span class="script font-bold text-pink text-[3.4rem] md:text-[6.4rem] inline-block leading-none">love</span>
           <svg viewBox="0 0 200 14" preserveAspectRatio="none">
             <path d="M2 9 Q 50 2 100 7 T 198 8" fill="none" stroke="#EC4899" stroke-width="3" stroke-linecap="round"/>
           </svg>
-        </span>.<br/>
-        <span class="display-tight">Made for you.</span>
+        </span>.
       </h1>
       <p class="mt-7 max-w-prose text-lg text-muted leading-relaxed rise d2">
-        Small-batch custom apparel, drinkware, signs, and gifts — printed, cut, and engraved in Belmont, NC.
+        Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the people you love. Small-batch, from Belmont, NC.
       </p>
       <div class="mt-9 flex flex-wrap items-center gap-5 rise d3">
         <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-pink text-paper px-7 py-3.5 text-sm font-medium hover:bg-pink/90 transition">
@@ -172,9 +196,15 @@ tailwind.config = {
 
     <!-- Hero photo collage -->
     <div class="md:col-span-5 relative h-[420px] md:h-[520px] rise d2" aria-hidden="true">
-      <div class="ph absolute float1 rounded-md shadow-xl ring-1 ring-ink/5 w-44 h-44 md:w-56 md:h-56" style="top: 4%; left: 6%;" data-tag="custom tee"></div>
-      <div class="ph absolute float2 rounded-md shadow-xl ring-1 ring-ink/5 w-44 h-56 md:w-56 md:h-64" style="top: 28%; left: 50%;" data-tag="engraved tumbler"></div>
-      <div class="ph absolute float3 rounded-md shadow-xl ring-1 ring-ink/5 w-40 h-40 md:w-52 md:h-52" style="top: 62%; left: 14%;" data-tag="wood sign"></div>
+      <div class="tile float1 absolute rounded-md shadow-xl ring-1 ring-ink/5 w-44 h-44 md:w-56 md:h-56" style="top: 4%; left: 6%;">
+        <img src="../public/gallery/pretty-woman-wearing-tshirt.jpg" alt="" loading="eager" />
+      </div>
+      <div class="tile float2 absolute rounded-md shadow-xl ring-1 ring-ink/5 w-44 h-56 md:w-56 md:h-64" style="top: 28%; left: 50%;">
+        <img src="../public/gallery/thermos.jpg" alt="" loading="eager" />
+      </div>
+      <div class="tile float3 absolute rounded-md shadow-xl ring-1 ring-ink/5 w-40 h-40 md:w-52 md:h-52" style="top: 62%; left: 14%;">
+        <img src="../public/gallery/4719.jpg" alt="" loading="eager" />
+      </div>
       <span class="absolute right-2 top-2 script text-pink text-2xl rotate-12">made fresh</span>
     </div>
   </div>
@@ -191,18 +221,22 @@ tailwind.config = {
         <h2 class="display-tight mt-4 text-5xl md:text-7xl leading-[0.95]">Five things,<br/><span class="script text-pink text-[3.6rem] md:text-[6rem]">one workshop.</span></h2>
       </div>
       <div class="md:col-span-5">
-        <p class="text-muted text-lg leading-relaxed">Tell me what you need — apparel, drinkware, signage, or a one-off — and I'll match it to the right tools. Every piece comes off the same hand.</p>
+        <p class="text-muted text-lg leading-relaxed">Tell me what you need — apparel, drinkware, signage, or a one-off — and I'll match it to the right tools. Every piece comes off the same workbench.</p>
       </div>
     </div>
 
     <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
-      <!-- Card 1 -->
+      <!-- Card 1 — Apparel -->
       <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-6">
         <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="ph aspect-square rounded" data-tag="tee"></div>
-          <div class="ph aspect-square rounded" data-tag="hoodie"></div>
-          <div class="ph aspect-square rounded" data-tag="tote"></div>
+          <div class="tile aspect-square rounded ring-1 ring-rule/40">
+            <img src="../public/gallery/pretty-woman-wearing-tshirt.jpg" alt="Custom apparel sample" />
+          </div>
+          <div class="tile aspect-square rounded ring-1 ring-rule/40">
+            <img src="../public/gallery/still-life-spring-wardrobe-switch.jpg" alt="Custom apparel sample" />
+          </div>
+          <div class="ph aspect-square rounded" data-tag="hat"></div>
         </div>
         <h3 class="display text-2xl">Apparel & Accessories</h3>
         <p class="mt-2 text-sm text-muted">Full-color shirts, hoodies, tote bags, hats, and bandanas — vibrant on any fabric color, soft to the touch, built to last 50+ washes.</p>
@@ -213,10 +247,12 @@ tailwind.config = {
         </div>
       </article>
 
-      <!-- Card 2 — staggered down -->
+      <!-- Card 2 — Drinkware (staggered down) -->
       <article class="lift md:stagger-down bg-paper rounded-md ring-1 ring-rule/50 p-6">
         <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="ph aspect-square rounded" data-tag="tumbler"></div>
+          <div class="tile aspect-square rounded ring-1 ring-rule/40">
+            <img src="../public/gallery/thermos.jpg" alt="Custom drinkware sample" />
+          </div>
           <div class="ph aspect-square rounded" data-tag="bottle"></div>
           <div class="ph aspect-square rounded" data-tag="mug"></div>
         </div>
@@ -229,11 +265,15 @@ tailwind.config = {
         </div>
       </article>
 
-      <!-- Card 3 -->
+      <!-- Card 3 — Signs -->
       <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-6">
         <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="ph aspect-square rounded" data-tag="wood sign"></div>
-          <div class="ph aspect-square rounded" data-tag="acrylic"></div>
+          <div class="tile aspect-square rounded ring-1 ring-rule/40">
+            <img src="../public/gallery/4719.jpg" alt="Custom sign or decor piece" />
+          </div>
+          <div class="tile aspect-square rounded ring-1 ring-rule/40">
+            <img src="../public/gallery/pelican.jpg" alt="Custom sign or decor piece" />
+          </div>
           <div class="ph aspect-square rounded" data-tag="slate"></div>
         </div>
         <h3 class="display text-2xl">Signs & Decor</h3>
@@ -245,7 +285,7 @@ tailwind.config = {
         </div>
       </article>
 
-      <!-- Card 4 — staggered down -->
+      <!-- Card 4 — Promo & Gifts (staggered down) -->
       <article class="lift md:stagger-down bg-paper rounded-md ring-1 ring-rule/50 p-6">
         <div class="grid grid-cols-3 gap-2 mb-5">
           <div class="ph aspect-square rounded" data-tag="keychain"></div>
@@ -262,19 +302,26 @@ tailwind.config = {
         </div>
       </article>
 
-      <!-- Card 5 -->
-      <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-6 lg:col-span-1 md:col-span-2">
-        <div class="grid grid-cols-3 gap-2 mb-5">
+      <!-- Card 5 — Personal Commissions (wide, double column) -->
+      <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-7 md:col-span-2 lg:col-span-2">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-5">
           <div class="ph aspect-square rounded" data-tag="wedding"></div>
           <div class="ph aspect-square rounded" data-tag="memorial"></div>
           <div class="ph aspect-square rounded" data-tag="custom"></div>
+          <div class="ph aspect-square rounded" data-tag="gift"></div>
+          <div class="ph aspect-square rounded" data-tag="event"></div>
+          <div class="ph aspect-square rounded" data-tag="one-off"></div>
         </div>
-        <h3 class="display text-2xl">Personal Commissions</h3>
-        <p class="mt-2 text-sm text-muted">Wedding decor, memorial pieces, custom gifts, and one-off ideas — bring me your concept and we'll make it.</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">All four machines</span>
+        <div class="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <h3 class="display text-2xl md:text-3xl">Personal Commissions</h3>
+            <p class="mt-2 text-sm text-muted max-w-md">Wedding decor, memorial pieces, custom gifts, and one-off ideas — bring me your concept and we'll make it.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">All four machines</span>
+            </div>
+          </div>
+          <a href="#contact" class="script text-pink text-2xl hover:underline whitespace-nowrap">↳ tell me your idea</a>
         </div>
-        <p class="mt-5 script text-pink text-xl">↳ ask about anything</p>
       </article>
 
     </div>
@@ -291,25 +338,44 @@ tailwind.config = {
         <p class="eyebrow text-pink">Recent work</p>
         <h2 class="display-tight mt-4 text-5xl md:text-6xl">Gallery</h2>
       </div>
-      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter gallery">
-        <button class="px-4 py-2 text-sm rounded-full bg-pink text-paper">All</button>
-        <button class="px-4 py-2 text-sm rounded-full ring-1 ring-rule hover:bg-pinksoft transition">Apparel</button>
-        <button class="px-4 py-2 text-sm rounded-full ring-1 ring-rule hover:bg-pinksoft transition">Drinkware</button>
-        <button class="px-4 py-2 text-sm rounded-full ring-1 ring-rule hover:bg-pinksoft transition">Signs</button>
-        <button class="px-4 py-2 text-sm rounded-full ring-1 ring-rule hover:bg-pinksoft transition">Gifts</button>
+      <div id="gallery-filters" class="flex flex-wrap gap-2" role="group" aria-label="Filter gallery">
+        <button type="button" class="chip is-active" data-filter="all">All</button>
+        <button type="button" class="chip" data-filter="apparel">Apparel</button>
+        <button type="button" class="chip" data-filter="drinkware">Drinkware</button>
+        <button type="button" class="chip" data-filter="signs">Signs</button>
+        <button type="button" class="chip" data-filter="gifts">Gifts</button>
       </div>
     </div>
 
-    <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-      <div class="ph aspect-[3/4] rounded-md" data-tag="bridesmaid tees"></div>
-      <div class="ph aspect-square rounded-md" data-tag="rotary tumbler"></div>
-      <div class="ph aspect-[4/5] rounded-md" data-tag="cutting board"></div>
-      <div class="ph aspect-square rounded-md" data-tag="custom hat"></div>
-      <div class="ph aspect-[3/4] rounded-md" data-tag="memorial sign"></div>
-      <div class="ph aspect-square rounded-md" data-tag="branded mug set"></div>
-      <div class="ph aspect-[4/5] rounded-md" data-tag="leather wallet"></div>
-      <div class="ph aspect-square rounded-md" data-tag="acrylic award"></div>
+    <div id="gallery-grid" class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+      <div class="gallery-tile aspect-[3/4] rounded-md ring-1 ring-rule/30" data-category="apparel">
+        <img src="../public/gallery/pretty-woman-wearing-tshirt.jpg" alt="Pretty woman wearing custom shirt" loading="lazy" class="w-full h-full object-cover" />
+        <span class="cat-tag">Apparel</span>
+      </div>
+      <div class="gallery-tile aspect-square rounded-md ring-1 ring-rule/30" data-category="drinkware">
+        <img src="../public/gallery/thermos.jpg" alt="Custom thermos with heron design" loading="lazy" class="w-full h-full object-cover" />
+        <span class="cat-tag">Drinkware</span>
+      </div>
+      <div class="gallery-tile aspect-[4/5] rounded-md ring-1 ring-rule/30" data-category="signs">
+        <img src="../public/gallery/4719.jpg" alt="Custom poster artwork" loading="lazy" class="w-full h-full object-cover" />
+        <span class="cat-tag">Signs</span>
+      </div>
+      <div class="gallery-tile ph aspect-square rounded-md" data-category="gifts" data-tag="keychain"></div>
+
+      <div class="gallery-tile aspect-[3/4] rounded-md ring-1 ring-rule/30" data-category="apparel">
+        <img src="../public/gallery/still-life-spring-wardrobe-switch.jpg" alt="Custom wardrobe pieces" loading="lazy" class="w-full h-full object-cover" />
+        <span class="cat-tag">Apparel</span>
+      </div>
+      <div class="gallery-tile ph aspect-square rounded-md" data-category="drinkware" data-tag="branded mug set"></div>
+      <div class="gallery-tile aspect-[4/5] rounded-md ring-1 ring-rule/30" data-category="signs">
+        <img src="../public/gallery/pelican.jpg" alt="Pelican illustration" loading="lazy" class="w-full h-full object-cover" />
+        <span class="cat-tag">Signs</span>
+      </div>
+      <div class="gallery-tile ph aspect-square rounded-md" data-category="gifts" data-tag="leather wallet"></div>
     </div>
+    <p id="gallery-empty" class="mt-10 hidden text-center text-sm italic text-muted">
+      No samples in this category yet — coming soon.
+    </p>
     <p class="mt-6 text-center text-xs italic text-muted">Drop product photos into <code class="text-pink not-italic">/public/gallery/&lt;category&gt;/</code> — they'll auto-populate.</p>
   </div>
 </section>
@@ -341,7 +407,9 @@ tailwind.config = {
 <section id="about" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6 sm:px-8 grid md:grid-cols-12 gap-12 items-center">
     <div class="md:col-span-5">
-      <div class="ph aspect-[4/5] rounded-md" data-tag="portrait of carina"></div>
+      <div class="tile aspect-[4/5] rounded-md ring-1 ring-rule/40 shadow-lg">
+        <img src="../photos/about.jpeg" alt="Carina Wilson, founder of Homemade Carolina" loading="lazy" />
+      </div>
     </div>
     <div class="md:col-span-7">
       <p class="eyebrow text-pink">About</p>
@@ -399,7 +467,7 @@ tailwind.config = {
   <div class="max-w-6xl mx-auto px-6 sm:px-8 grid md:grid-cols-3 gap-10 items-center">
     <div>
       <img src="logo.png" alt="Homemade Carolina" class="h-24 w-auto" />
-      <p class="mt-3 text-sm text-muted max-w-xs italic">Small-batch made by hand in Belmont, NC.</p>
+      <p class="mt-3 text-sm text-muted max-w-xs italic">Small-batch from Belmont, NC.</p>
     </div>
     <nav class="flex justify-center gap-8 text-sm" aria-label="Footer">
       <a href="#services" class="hover:text-pink transition">Services</a>
@@ -410,6 +478,39 @@ tailwind.config = {
     <p class="text-xs text-muted text-right">© 2026 Homemade Carolina · Belmont, NC</p>
   </div>
 </footer>
+
+<!-- Gallery filter behavior -->
+<script>
+(function () {
+  var chips = document.querySelectorAll('#gallery-filters .chip');
+  var tiles = document.querySelectorAll('#gallery-grid .gallery-tile');
+  var emptyMsg = document.getElementById('gallery-empty');
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var filter = chip.getAttribute('data-filter');
+
+      chips.forEach(function (c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+
+      var visibleCount = 0;
+      tiles.forEach(function (tile) {
+        var matches = filter === 'all' || tile.getAttribute('data-category') === filter;
+        if (matches) {
+          tile.removeAttribute('hidden');
+          visibleCount += 1;
+        } else {
+          tile.setAttribute('hidden', '');
+        }
+      });
+
+      if (emptyMsg) {
+        emptyMsg.classList.toggle('hidden', visibleCount > 0);
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
