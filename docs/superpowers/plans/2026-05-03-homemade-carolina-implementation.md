@@ -15,7 +15,8 @@
 ## Phase 0 — Design exploration: COMPLETED 2026-05-03
 
 Three Playful-Crafted variants built as HTML hi-fi prototypes in `design-exploration/`. Carina selected **Variant A · Studio Note** with these tweaks:
-- Headline switched to "Small batch. Big *love*." (*love* in Caveat script + pink scribble)
+
+- Headline switched to "Small batch. Big _love_." (_love_ in Caveat script + pink scribble)
 - Subhead from Variant B's product-listing copy
 - Personal Commissions card widened to span 2 columns
 - "Made by hand" mentions reduced to one (in About)
@@ -117,6 +118,7 @@ homemadecarolina/
 ### Task 1: Initialize Vite + React + TypeScript + pnpm
 
 **Files:**
+
 - Create: `package.json`, `tsconfig.json`, `tsconfig.node.json`, `vite.config.ts`, `index.html`, `src/main.tsx`, `src/App.tsx`, `.gitignore`
 
 - [ ] **Step 1: Confirm Node version**
@@ -124,15 +126,19 @@ homemadecarolina/
 ```bash
 node --version
 ```
+
 Expected: `v20.x` or higher. If lower, install Node 20+ via nvm before continuing.
 
 - [ ] **Step 2: Initialize pnpm + Vite**
 
 Run from repo root:
+
 ```bash
 pnpm create vite@latest . -- --template react-ts
 ```
+
 When prompted to overwrite the directory, choose **Ignore files and continue**. Then:
+
 ```bash
 pnpm install
 ```
@@ -142,7 +148,7 @@ pnpm install
 ```tsx
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center">
       <h1 className="text-2xl">Homemade Carolina — scaffold</h1>
     </div>
   );
@@ -195,6 +201,7 @@ In `tsconfig.json`, ensure `compilerOptions.strict` is `true`. Vite's template d
 - [ ] **Step 8: Update `.gitignore`**
 
 Append:
+
 ```
 node_modules
 dist
@@ -209,6 +216,7 @@ public/sitemap.xml
 ```bash
 pnpm dev
 ```
+
 Expected: server starts on `http://localhost:5173`, page renders the placeholder text. Stop the server with Ctrl-C.
 
 - [ ] **Step 10: Commit**
@@ -223,6 +231,7 @@ git commit -m "chore: scaffold Vite + React + TS project"
 ### Task 2: Add Tailwind CSS v4
 
 **Files:**
+
 - Create: `src/index.css`, `postcss.config.js`
 - Modify: `package.json` (deps), `vite.config.ts`
 
@@ -235,6 +244,7 @@ pnpm add -D tailwindcss @tailwindcss/vite
 - [ ] **Step 2: Wire Tailwind into Vite**
 
 Replace `vite.config.ts`:
+
 ```ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -252,13 +262,13 @@ export default defineConfig({
 
 @theme {
   /* Brand color tokens — DESIGN_TOKEN values get refined in Task 5 */
-  --color-ink: #0E0E0E;
-  --color-paper: #FFFFFF;
-  --color-paper-warm: #FAF7F2;
-  --color-pink: #FF4D8D;          /* DESIGN_TOKEN: replaced with chosen variant's pink */
-  --color-pink-soft: #FFD9E5;
-  --color-muted: #6B6B6B;
-  --color-muted-soft: #E8E6E2;
+  --color-ink: #0e0e0e;
+  --color-paper: #ffffff;
+  --color-paper-warm: #faf7f2;
+  --color-pink: #ff4d8d; /* DESIGN_TOKEN: replaced with chosen variant's pink */
+  --color-pink-soft: #ffd9e5;
+  --color-muted: #6b6b6b;
+  --color-muted-soft: #e8e6e2;
 
   /* Font tokens — DESIGN_TOKEN values get refined in Task 6 */
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
@@ -268,22 +278,30 @@ export default defineConfig({
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html { scroll-behavior: smooth; }
-body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
 ```
 
 - [ ] **Step 4: Verify Tailwind classes work in `App.tsx`**
 
 Update App.tsx to use a Tailwind class with a custom token:
+
 ```tsx
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-paper">
-      <h1 className="text-2xl font-display text-pink">Homemade Carolina — scaffold</h1>
+    <div className="bg-paper flex min-h-screen items-center justify-center">
+      <h1 className="font-display text-pink text-2xl">Homemade Carolina — scaffold</h1>
     </div>
   );
 }
 ```
+
 Run `pnpm dev` and confirm the heading uses the display font in pink. Stop the server.
 
 - [ ] **Step 5: Commit**
@@ -298,6 +316,7 @@ git commit -m "chore: add Tailwind v4 with brand theme tokens"
 ### Task 3: Configure ESLint, Prettier, and a Vitest baseline
 
 **Files:**
+
 - Create: `eslint.config.js`, `.prettierrc`, `vitest.config.ts`, `tests/unit/.gitkeep`
 
 - [ ] **Step 1: Install dev dependencies**
@@ -309,6 +328,7 @@ pnpm add -D prettier eslint-plugin-jsx-a11y vitest @vitest/ui jsdom @testing-lib
 - [ ] **Step 2: Configure Prettier**
 
 Create `.prettierrc`:
+
 ```json
 {
   "semi": true,
@@ -318,7 +338,9 @@ Create `.prettierrc`:
   "plugins": ["prettier-plugin-tailwindcss"]
 }
 ```
+
 Then:
+
 ```bash
 pnpm add -D prettier-plugin-tailwindcss
 ```
@@ -326,6 +348,7 @@ pnpm add -D prettier-plugin-tailwindcss
 - [ ] **Step 3: Add the jsx-a11y rules to the existing `eslint.config.js`**
 
 Vite generates `eslint.config.js`. Add `jsx-a11y` as a plugin and turn on `recommended` rules. Append:
+
 ```js
 import jsxA11y from "eslint-plugin-jsx-a11y";
 
@@ -342,6 +365,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 - [ ] **Step 4: Add Vitest config**
 
 Create `vitest.config.ts`:
+
 ```ts
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
@@ -357,6 +381,7 @@ export default defineConfig({
 ```
 
 Create `tests/setup.ts`:
+
 ```ts
 import "@testing-library/jest-dom/vitest";
 ```
@@ -364,6 +389,7 @@ import "@testing-library/jest-dom/vitest";
 - [ ] **Step 5: Add scripts to `package.json`**
 
 Merge into `"scripts"`:
+
 ```json
 {
   "dev": "vite",
@@ -380,6 +406,7 @@ Merge into `"scripts"`:
 - [ ] **Step 6: Add a sanity test**
 
 Create `tests/unit/sanity.test.ts`:
+
 ```ts
 import { describe, it, expect } from "vitest";
 
@@ -389,6 +416,7 @@ describe("sanity", () => {
   });
 });
 ```
+
 Run: `pnpm test` — Expected: 1 passed.
 
 - [ ] **Step 7: Format and lint**
@@ -397,6 +425,7 @@ Run: `pnpm test` — Expected: 1 passed.
 pnpm format
 pnpm lint
 ```
+
 Both should succeed.
 
 - [ ] **Step 8: Commit**
@@ -411,6 +440,7 @@ git commit -m "chore: add ESLint a11y rules, Prettier, and Vitest"
 ### Task 4: Install runtime libraries and shadcn/ui
 
 **Files:**
+
 - Modify: `package.json`, `tsconfig.json`, `vite.config.ts`
 - Create: `components.json`, `src/lib/utils.ts`, `src/components/ui/*`
 
@@ -423,12 +453,14 @@ pnpm add framer-motion lucide-react clsx tailwind-merge class-variance-authority
 - [ ] **Step 2: Configure path alias `@/*`**
 
 In `tsconfig.json` add to `compilerOptions`:
+
 ```json
 "baseUrl": ".",
 "paths": { "@/*": ["./src/*"] }
 ```
 
 In `vite.config.ts` add to the export:
+
 ```ts
 import path from "node:path";
 
@@ -441,9 +473,11 @@ export default defineConfig({
 ```
 
 Mirror in `vitest.config.ts`:
+
 ```ts
 resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
 ```
+
 (Add `import path from "node:path";` at top.)
 
 - [ ] **Step 3: Create `src/lib/utils.ts`**
@@ -462,7 +496,9 @@ export function cn(...inputs: ClassValue[]) {
 ```bash
 pnpm dlx shadcn@latest init
 ```
+
 When prompted:
+
 - Style: **Default**
 - Base color: **Neutral**
 - CSS variables: **Yes**
@@ -480,6 +516,7 @@ pnpm dlx shadcn@latest add button card dialog sheet toggle-group
 ```bash
 pnpm build
 ```
+
 Expected: success, dist/ created.
 
 - [ ] **Step 7: Commit**
@@ -496,21 +533,23 @@ git commit -m "chore: add Framer Motion, lucide, shadcn primitives, path alias"
 ### Task 5: Apply Variant A's locked color tokens
 
 **Files:**
+
 - Modify: `src/index.css`
 
 - [ ] **Step 1: Replace placeholder color tokens with Variant A's locked hex values**
 
 Edit the `@theme` block in `src/index.css` so it reads:
+
 ```css
 @theme {
   /* Brand colors — Variant A · Studio Note (locked 2026-05-03) */
-  --color-ink: #1a1310;          /* warm off-black */
-  --color-paper: #FAF7F2;        /* warm cream */
-  --color-paper-2: #F2EDE4;      /* alt section background */
-  --color-pink: #EC4899;         /* hot-pink accent */
-  --color-pink-soft: #FBD5E5;    /* soft fill for hover/accents */
-  --color-muted: #7A6E66;        /* body muted variant */
-  --color-rule: #D9D2C7;         /* hairline rules / card borders */
+  --color-ink: #1a1310; /* warm off-black */
+  --color-paper: #faf7f2; /* warm cream */
+  --color-paper-2: #f2ede4; /* alt section background */
+  --color-pink: #ec4899; /* hot-pink accent */
+  --color-pink-soft: #fbd5e5; /* soft fill for hover/accents */
+  --color-muted: #7a6e66; /* body muted variant */
+  --color-rule: #d9d2c7; /* hairline rules / card borders */
 
   /* Fonts — see Task 6 */
   --font-display: "Fraunces", ui-serif, serif;
@@ -524,6 +563,7 @@ Edit the `@theme` block in `src/index.css` so it reads:
 - [ ] **Step 2: Verify contrast against the Variant A reference**
 
 Open `design-exploration/variant-a-studio-note.html` in a browser side-by-side with `pnpm dev`. Confirm:
+
 - Pink `#EC4899` on cream `#FAF7F2` looks like the prototype (used for CTAs, eyebrow, script accent — not body text)
 - Body text uses `--color-ink` (`#1a1310`) on `--color-paper` — strong contrast
 - Muted text uses `--color-muted` (`#7A6E66`) on `--color-paper` — sufficient at 16px+
@@ -542,15 +582,20 @@ git commit -m "feat(theme): apply Variant A color tokens"
 ### Task 6: Wire Google Fonts (Variant A · Studio Note pairing)
 
 **Files:**
+
 - Modify: `index.html`, `src/index.css`
 
 - [ ] **Step 1: Add preconnect + stylesheet links to `index.html`**
 
 In `<head>`, before any other style/script resource:
+
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+/>
 ```
 
 - [ ] **Step 2: Confirm font tokens in `src/index.css` match Task 5**
@@ -560,11 +605,26 @@ The `@theme` block from Task 5 already declares `--font-display: "Fraunces", ...
 - [ ] **Step 3: Add Fraunces variable-axis utilities to `src/index.css`**
 
 Append below the `@theme` block:
+
 ```css
-.font-display { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 30; }
-.font-display-tight { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: -0.02em; }
-.font-script { font-family: var(--font-script); }
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 30;
+}
+.font-display-tight {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 0;
+  letter-spacing: -0.02em;
+}
+.font-script {
+  font-family: var(--font-script);
+}
 ```
+
 (These mirror the prototype's two Fraunces flavors — soft optical for warm headlines, tight optical for the secondary line.)
 
 - [ ] **Step 4: Boot dev server, verify fonts load**
@@ -572,6 +632,7 @@ Append below the `@theme` block:
 ```bash
 pnpm dev
 ```
+
 Open http://localhost:5173. In DevTools → Network tab, filter `fonts`. Confirm a `200` response from `fonts.googleapis.com` and the family CSS pulls woff2 files. The placeholder heading should render in Fraunces. Stop the server.
 
 - [ ] **Step 5: Commit**
@@ -588,6 +649,7 @@ git commit -m "feat(theme): wire Fraunces + Caveat + Inter (Variant A)"
 ### Task 7: Build the gallery-manifest generator (TDD)
 
 **Files:**
+
 - Create: `scripts/generate-gallery-manifest.ts`, `tests/unit/generate-gallery-manifest.test.ts`
 - Modify: `package.json`
 
@@ -596,6 +658,7 @@ Goal: a Node script that scans `public/gallery/<category>/*.{jpg,png,webp}` and 
 - [ ] **Step 1: Write the failing test**
 
 Create `tests/unit/generate-gallery-manifest.test.ts`:
+
 ```ts
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync } from "node:fs";
@@ -625,14 +688,26 @@ describe("buildManifest", () => {
       {
         category: "apparel",
         images: [
-          { src: "/gallery/apparel/shirt-1.jpg", alt: "Custom apparel — shirt 1", filename: "shirt-1.jpg" },
-          { src: "/gallery/apparel/shirt-2.png", alt: "Custom apparel — shirt 2", filename: "shirt-2.png" },
+          {
+            src: "/gallery/apparel/shirt-1.jpg",
+            alt: "Custom apparel — shirt 1",
+            filename: "shirt-1.jpg",
+          },
+          {
+            src: "/gallery/apparel/shirt-2.png",
+            alt: "Custom apparel — shirt 2",
+            filename: "shirt-2.png",
+          },
         ],
       },
       {
         category: "drinkware",
         images: [
-          { src: "/gallery/drinkware/tumbler-1.webp", alt: "Custom drinkware — tumbler 1", filename: "tumbler-1.webp" },
+          {
+            src: "/gallery/drinkware/tumbler-1.webp",
+            alt: "Custom drinkware — tumbler 1",
+            filename: "tumbler-1.webp",
+          },
         ],
       },
     ]);
@@ -660,11 +735,13 @@ describe("buildManifest", () => {
 ```bash
 pnpm test tests/unit/generate-gallery-manifest.test.ts
 ```
+
 Expected: FAIL with "Cannot find module ../../scripts/generate-gallery-manifest".
 
 - [ ] **Step 3: Implement the generator**
 
 Create `scripts/generate-gallery-manifest.ts`:
+
 ```ts
 import { readdirSync, statSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, extname, basename, dirname } from "node:path";
@@ -684,7 +761,10 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 function humanize(filename: string): string {
   const stem = basename(filename, extname(filename));
-  return stem.replace(/^placeholder-/, "").replace(/[-_]+/g, " ").trim();
+  return stem
+    .replace(/^placeholder-/, "")
+    .replace(/[-_]+/g, " ")
+    .trim();
 }
 
 export function buildManifest(galleryRoot: string): GalleryCategory[] {
@@ -733,16 +813,19 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 ```bash
 pnpm test tests/unit/generate-gallery-manifest.test.ts
 ```
+
 Expected: 3 passed.
 
 - [ ] **Step 5: Wire it into the build**
 
 Install `tsx`:
+
 ```bash
 pnpm add -D tsx
 ```
 
 Update `package.json` scripts:
+
 ```json
 {
   "prebuild": "tsx scripts/generate-gallery-manifest.ts",
@@ -764,6 +847,7 @@ Add a few placeholder images per folder (any 600×600+ jpegs are fine for now �
 pnpm tsx scripts/generate-gallery-manifest.ts
 cat src/data/gallery.generated.ts
 ```
+
 Expected: file contains an array with all five categories and the placeholder filenames.
 
 - [ ] **Step 8: Commit**
@@ -778,11 +862,13 @@ git commit -m "feat(build): gallery-manifest generator + tests + placeholder fol
 ### Task 8: SEO `LocalBusiness` JSON-LD generator (TDD)
 
 **Files:**
+
 - Create: `src/lib/seo.ts`, `tests/unit/seo.test.ts`
 
 - [ ] **Step 1: Write the failing test**
 
 Create `tests/unit/seo.test.ts`:
+
 ```ts
 import { describe, it, expect } from "vitest";
 import { localBusinessJsonLd, type BusinessInfo } from "@/lib/seo";
@@ -837,6 +923,7 @@ describe("localBusinessJsonLd", () => {
 ```bash
 pnpm test tests/unit/seo.test.ts
 ```
+
 Expected: FAIL — module not found.
 
 - [ ] **Step 3: Implement `src/lib/seo.ts`**
@@ -875,8 +962,8 @@ export type LocalBusinessJsonLd = {
 };
 
 export function localBusinessJsonLd(info: BusinessInfo): LocalBusinessJsonLd {
-  const sameAs = [info.socials.instagram, info.socials.facebook].filter(
-    (v): v is string => Boolean(v),
+  const sameAs = [info.socials.instagram, info.socials.facebook].filter((v): v is string =>
+    Boolean(v),
   );
   const json: LocalBusinessJsonLd = {
     "@context": "https://schema.org",
@@ -905,6 +992,7 @@ export function localBusinessJsonLd(info: BusinessInfo): LocalBusinessJsonLd {
 ```bash
 pnpm test tests/unit/seo.test.ts
 ```
+
 Expected: 3 passed.
 
 - [ ] **Step 5: Commit**
@@ -919,11 +1007,13 @@ git commit -m "feat(seo): LocalBusiness JSON-LD generator with tests"
 ### Task 9: Smooth-scroll-with-header-offset utility (TDD)
 
 **Files:**
+
 - Create: `src/lib/scroll.ts`, `tests/unit/scroll.test.ts`
 
 - [ ] **Step 1: Write the failing test**
 
 Create `tests/unit/scroll.test.ts`:
+
 ```ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { scrollToAnchor } from "@/lib/scroll";
@@ -941,7 +1031,17 @@ describe("scrollToAnchor", () => {
     });
     Object.defineProperty(document.getElementById("services")!, "getBoundingClientRect", {
       configurable: true,
-      value: () => ({ top: 1000, left: 0, right: 0, bottom: 0, width: 0, height: 0, x: 0, y: 0, toJSON: () => ({}) }),
+      value: () => ({
+        top: 1000,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: 0,
+        height: 0,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      }),
     });
     Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
   });
@@ -973,6 +1073,7 @@ describe("scrollToAnchor", () => {
 ```bash
 pnpm test tests/unit/scroll.test.ts
 ```
+
 Expected: FAIL — module not found.
 
 - [ ] **Step 3: Implement `src/lib/scroll.ts`**
@@ -994,6 +1095,7 @@ export function scrollToAnchor(id: string): void {
 ```bash
 pnpm test tests/unit/scroll.test.ts
 ```
+
 Expected: 3 passed.
 
 - [ ] **Step 5: Commit**
@@ -1008,11 +1110,13 @@ git commit -m "feat(lib): smooth-scroll-to-anchor with header offset and reduced
 ### Task 10: Motion constants module (TDD)
 
 **Files:**
+
 - Create: `src/lib/motion.ts`, `tests/unit/motion.test.ts`
 
 - [ ] **Step 1: Write the failing test**
 
 Create `tests/unit/motion.test.ts`:
+
 ```ts
 import { describe, it, expect } from "vitest";
 import { EASING, DURATIONS, revealVariants } from "@/lib/motion";
@@ -1031,9 +1135,7 @@ describe("motion constants", () => {
   it("revealVariants returns hidden + visible states", () => {
     const v = revealVariants();
     expect(v.hidden).toEqual({ opacity: 0, y: 24 });
-    expect(v.visible).toEqual(
-      expect.objectContaining({ opacity: 1, y: 0 }),
-    );
+    expect(v.visible).toEqual(expect.objectContaining({ opacity: 1, y: 0 }));
   });
 
   it("revealVariants respects reducedMotion=true (no y translate)", () => {
@@ -1049,6 +1151,7 @@ describe("motion constants", () => {
 ```bash
 pnpm test tests/unit/motion.test.ts
 ```
+
 Expected: FAIL.
 
 - [ ] **Step 3: Implement `src/lib/motion.ts`**
@@ -1082,6 +1185,7 @@ export function revealVariants(opts: { reducedMotion?: boolean } = {}): Variants
 ```bash
 pnpm test tests/unit/motion.test.ts
 ```
+
 Expected: 4 passed.
 
 - [ ] **Step 5: Commit**
@@ -1096,6 +1200,7 @@ git commit -m "feat(motion): easing, durations, and reveal variants with reduced
 ### Task 11: `useReducedMotion` hook
 
 **Files:**
+
 - Create: `src/hooks/use-reduced-motion.ts`, `tests/unit/use-reduced-motion.test.ts`
 
 - [ ] **Step 1: Write the failing test**
@@ -1139,6 +1244,7 @@ describe("useReducedMotion", () => {
 ```bash
 pnpm test tests/unit/use-reduced-motion.test.ts
 ```
+
 Expected: FAIL.
 
 - [ ] **Step 3: Implement the hook**
@@ -1169,6 +1275,7 @@ export function useReducedMotion(): boolean {
 ```bash
 pnpm test tests/unit/use-reduced-motion.test.ts
 ```
+
 Expected: 2 passed.
 
 - [ ] **Step 5: Commit**
@@ -1183,6 +1290,7 @@ git commit -m "feat(hooks): useReducedMotion"
 ### Task 12: `useScrollProgress` hook
 
 **Files:**
+
 - Create: `src/hooks/use-scroll-progress.ts`
 
 This hook is a thin window event listener — testing it adds little value over reading the code. Skip TDD here; visual verification in Task 19 (header progress bar) is the proof.
@@ -1225,11 +1333,13 @@ git commit -m "feat(hooks): useScrollProgress"
 ### Task 13: `useReveal` hook + `<Reveal>` wrapper component (TDD on the hook)
 
 **Files:**
+
 - Create: `src/hooks/use-reveal.ts`, `src/components/motion/reveal.tsx`, `tests/components/reveal.test.tsx`
 
 - [ ] **Step 1: Implement `useReveal` first** (no test — it's a thin wrapper around `IntersectionObserver`, which is unreliable to test in jsdom)
 
 Create `src/hooks/use-reveal.ts`:
+
 ```ts
 import { useEffect, useRef, useState } from "react";
 
@@ -1262,6 +1372,7 @@ export function useReveal<T extends Element = HTMLDivElement>(threshold = 0.2) {
 - [ ] **Step 2: Write the test for `<Reveal>` component behavior**
 
 Create `tests/components/reveal.test.tsx`:
+
 ```tsx
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -1290,6 +1401,7 @@ describe("<Reveal>", () => {
 - [ ] **Step 3: Implement `<Reveal>`**
 
 Create `src/components/motion/reveal.tsx`:
+
 ```tsx
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -1320,6 +1432,7 @@ export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: n
 ```bash
 pnpm test tests/components/reveal.test.tsx
 ```
+
 Expected: 2 passed.
 
 - [ ] **Step 5: Commit**
@@ -1336,6 +1449,7 @@ git commit -m "feat(motion): useReveal hook and <Reveal> wrapper"
 ### Task 14: `<Container>` and `<Section>` primitives
 
 **Files:**
+
 - Create: `src/components/layout/container.tsx`, `src/components/layout/section.tsx`
 
 - [ ] **Step 1: Implement `<Container>`**
@@ -1380,6 +1494,7 @@ git commit -m "feat(layout): Container and Section primitives"
 ### Task 15: `<Logo>` component
 
 **Files:**
+
 - Create: `src/components/layout/logo.tsx`
 
 - [ ] **Step 1: Move logo to public/**
@@ -1397,7 +1512,11 @@ import { cn } from "@/lib/utils";
 
 export function Logo({ className, height = 36 }: { className?: string; height?: number }) {
   return (
-    <a href="#top" aria-label="Homemade Carolina home" className={cn("inline-flex items-center", className)}>
+    <a
+      href="#top"
+      aria-label="Homemade Carolina home"
+      className={cn("inline-flex items-center", className)}
+    >
       <img src="/logo.png" alt="Homemade Carolina" height={height} style={{ height }} />
     </a>
   );
@@ -1416,6 +1535,7 @@ git commit -m "feat(layout): Logo component"
 ### Task 16: `<SkipToContent>` link (a11y)
 
 **Files:**
+
 - Create: `src/components/layout/skip-to-content.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1426,7 +1546,7 @@ export function SkipToContent() {
   return (
     <a
       href="#main"
-      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+      className="focus:bg-ink focus:text-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2"
     >
       Skip to main content
     </a>
@@ -1446,6 +1566,7 @@ git commit -m "feat(a11y): skip-to-content link"
 ### Task 17: Mobile nav (`<MobileNav>`) using shadcn Sheet
 
 **Files:**
+
 - Create: `src/components/layout/mobile-nav.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1484,7 +1605,7 @@ export function MobileNav() {
                 setOpen(false);
                 setTimeout(() => scrollToAnchor(l.id), 50);
               }}
-              className="text-left text-2xl font-display"
+              className="font-display text-left text-2xl"
             >
               {l.label}
             </button>
@@ -1508,6 +1629,7 @@ git commit -m "feat(nav): mobile nav drawer using shadcn Sheet"
 ### Task 18: `<Header>` (sticky, with desktop nav + mobile trigger + phone CTA)
 
 **Files:**
+
 - Create: `src/components/layout/header.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1542,7 +1664,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b border-muted-soft/40 bg-paper/85 backdrop-blur",
+        "border-muted-soft/40 bg-paper/85 sticky top-0 z-40 border-b backdrop-blur",
         "transition-[padding] duration-200",
         shrunk ? "py-3" : "py-6",
       )}
@@ -1557,7 +1679,7 @@ export function Header() {
               key={l.id}
               type="button"
               onClick={() => scrollToAnchor(l.id)}
-              className="text-sm uppercase tracking-wide hover:text-pink"
+              className="hover:text-pink text-sm tracking-wide uppercase"
             >
               {l.label}
             </button>
@@ -1567,7 +1689,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${CONTACT.phoneE164}`}
-            className="hidden md:inline-flex items-center gap-2 text-sm hover:text-pink"
+            className="hover:text-pink hidden items-center gap-2 text-sm md:inline-flex"
           >
             <Phone className="size-4" />
             {CONTACT.phoneDisplay}
@@ -1592,6 +1714,7 @@ git commit -m "feat(layout): sticky header with desktop nav, mobile trigger, pho
 ### Task 19: `<ScrollProgressBar>` (pink-tinted, top of header)
 
 **Files:**
+
 - Create: `src/components/motion/scroll-progress-bar.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1603,12 +1726,9 @@ import { useScrollProgress } from "@/hooks/use-scroll-progress";
 export function ScrollProgressBar() {
   const p = useScrollProgress();
   return (
-    <div
-      aria-hidden
-      className="absolute left-0 top-0 h-[3px] w-full bg-muted-soft/40"
-    >
+    <div aria-hidden className="bg-muted-soft/40 absolute top-0 left-0 h-[3px] w-full">
       <div
-        className="h-full bg-pink transition-[width] duration-75 ease-linear"
+        className="bg-pink h-full transition-[width] duration-75 ease-linear"
         style={{ width: `${p * 100}%` }}
       />
     </div>
@@ -1628,6 +1748,7 @@ git commit -m "feat(motion): scroll progress bar"
 ### Task 20: `<Footer>`
 
 **Files:**
+
 - Create: `src/components/layout/footer.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1650,11 +1771,11 @@ const LINKS = [
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-muted-soft/40 bg-paper py-12">
+    <footer className="border-muted-soft/40 bg-paper border-t py-12">
       <Container className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <div>
           <Logo height={32} />
-          <p className="mt-2 max-w-xs text-sm text-muted">
+          <p className="text-muted mt-2 max-w-xs text-sm">
             Small-batch made by hand in Belmont, NC.
           </p>
         </div>
@@ -1665,7 +1786,7 @@ export function Footer() {
               key={l.id}
               type="button"
               onClick={() => scrollToAnchor(l.id)}
-              className="text-sm hover:text-pink"
+              className="hover:text-pink text-sm"
             >
               {l.label}
             </button>
@@ -1674,14 +1795,14 @@ export function Footer() {
 
         <div className="flex items-center gap-4">
           <a aria-label="Instagram" href={CONTACT.instagram} target="_blank" rel="noreferrer">
-            <Instagram className="size-5 hover:text-pink" />
+            <Instagram className="hover:text-pink size-5" />
           </a>
           <a aria-label="Facebook" href={CONTACT.facebook} target="_blank" rel="noreferrer">
-            <Facebook className="size-5 hover:text-pink" />
+            <Facebook className="hover:text-pink size-5" />
           </a>
         </div>
       </Container>
-      <Container className="mt-8 flex justify-between text-xs text-muted">
+      <Container className="text-muted mt-8 flex justify-between text-xs">
         <span>© {year} Homemade Carolina · Belmont, NC</span>
       </Container>
     </footer>
@@ -1703,6 +1824,7 @@ git commit -m "feat(layout): footer"
 ### Task 21: Static content modules
 
 **Files:**
+
 - Create: `src/content/hero.ts`, `src/content/services.ts`, `src/content/testimonials.ts`, `src/content/about.ts`, `src/content/contact.ts`
 
 - [ ] **Step 1: Hero copy (per Variant A choice)**
@@ -1716,8 +1838,7 @@ export const HERO = {
   headline: { lead: "Small batch.", lead2: "Big", scriptWord: "love", trail: "." },
   subhead:
     "Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the people you love. Small-batch, from Belmont, NC.",
-  italicNote:
-    "Personal commissions and small-business branding since the vendor-fair days.",
+  italicNote: "Personal commissions and small-business branding since the vendor-fair days.",
   ctas: { primary: "Get a quote", secondaryLabel: "or call" },
 };
 ```
@@ -1847,6 +1968,7 @@ git commit -m "feat(content): static content modules for all sections"
 ### Task 22: `<Hero>` section
 
 **Files:**
+
 - Create: `src/components/sections/hero.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1864,9 +1986,27 @@ import { scrollToAnchor } from "@/lib/scroll";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const COLLAGE = [
-  { src: "/gallery/apparel/placeholder-1.jpg", alt: "Custom apparel sample", rot: -3, top: 10, left: 5 },
-  { src: "/gallery/drinkware/placeholder-1.jpg", alt: "Custom drinkware sample", rot: 4, top: 35, left: 50 },
-  { src: "/gallery/signs/placeholder-1.jpg", alt: "Custom sign sample", rot: -2, top: 60, left: 12 },
+  {
+    src: "/gallery/apparel/placeholder-1.jpg",
+    alt: "Custom apparel sample",
+    rot: -3,
+    top: 10,
+    left: 5,
+  },
+  {
+    src: "/gallery/drinkware/placeholder-1.jpg",
+    alt: "Custom drinkware sample",
+    rot: 4,
+    top: 35,
+    left: 50,
+  },
+  {
+    src: "/gallery/signs/placeholder-1.jpg",
+    alt: "Custom sign sample",
+    rot: -2,
+    top: 60,
+    left: 12,
+  },
 ];
 
 export function Hero() {
@@ -1876,10 +2016,10 @@ export function Hero() {
       <Container className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
         <div>
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.18em] text-pink">{HERO.eyebrow}</p>
+            <p className="text-pink text-xs tracking-[0.18em] uppercase">{HERO.eyebrow}</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="mt-4 font-display text-5xl leading-[1.05] md:text-7xl">
+            <h1 className="font-display mt-4 text-5xl leading-[1.05] md:text-7xl">
               {HERO.headline.lead}{" "}
               <span className="relative inline-block">
                 <span className="font-script text-pink">{HERO.headline.scriptWord}</span>
@@ -1889,20 +2029,20 @@ export function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-6 max-w-prose text-lg text-muted">{HERO.subhead}</p>
+            <p className="text-muted mt-6 max-w-prose text-lg">{HERO.subhead}</p>
           </Reveal>
           <Reveal delay={0.24}>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button
                 size="lg"
                 onClick={() => scrollToAnchor("contact")}
-                className="rounded-full bg-pink text-paper hover:bg-pink/90"
+                className="bg-pink text-paper hover:bg-pink/90 rounded-full"
               >
                 {HERO.ctas.primary}
               </Button>
               <a
                 href={`tel:${CONTACT.phoneE164}`}
-                className="inline-flex items-center gap-2 text-sm text-ink hover:text-pink"
+                className="text-ink hover:text-pink inline-flex items-center gap-2 text-sm"
               >
                 <Phone className="size-4" />
                 {HERO.ctas.secondaryLabel} {CONTACT.phoneDisplay}
@@ -1917,11 +2057,9 @@ export function Hero() {
               key={p.src}
               src={p.src}
               alt={p.alt}
-              className="absolute h-44 w-44 rounded-md object-cover shadow-xl ring-1 ring-ink/10 md:h-60 md:w-60"
+              className="ring-ink/10 absolute h-44 w-44 rounded-md object-cover shadow-xl ring-1 md:h-60 md:w-60"
               style={{ top: `${p.top}%`, left: `${p.left}%`, rotate: `${p.rot}deg` }}
-              animate={
-                reduced ? undefined : { y: [0, i % 2 === 0 ? -4 : 4, 0] }
-              }
+              animate={reduced ? undefined : { y: [0, i % 2 === 0 ? -4 : 4, 0] }}
               transition={
                 reduced ? undefined : { duration: 8 + i * 2, repeat: Infinity, ease: "easeInOut" }
               }
@@ -1936,7 +2074,7 @@ export function Hero() {
 function ScribbleUnderline({ animate }: { animate: boolean }) {
   return (
     <svg
-      className="absolute -bottom-2 left-0 h-3 w-full text-pink"
+      className="text-pink absolute -bottom-2 left-0 h-3 w-full"
       viewBox="0 0 200 12"
       preserveAspectRatio="none"
     >
@@ -1958,6 +2096,7 @@ function ScribbleUnderline({ animate }: { animate: boolean }) {
 - [ ] **Step 2: Visually verify**
 
 Wire `<Hero />` into `App.tsx` (replace placeholder content with `<Header /> + <main id="main"><Hero /></main> + <Footer />`):
+
 ```tsx
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -1969,7 +2108,9 @@ export default function App() {
     <>
       <SkipToContent />
       <Header />
-      <main id="main"><Hero /></main>
+      <main id="main">
+        <Hero />
+      </main>
       <Footer />
     </>
   );
@@ -1990,6 +2131,7 @@ git commit -m "feat(sections): hero with scribble underline + collage"
 ### Task 23: `<ServiceCard>` and `<Services>` section
 
 **Files:**
+
 - Create: `src/components/sections/service-card.tsx`, `src/components/sections/services.tsx`
 - Modify: `src/App.tsx`
 
@@ -2002,18 +2144,15 @@ import { type ServiceCategory } from "@/content/services";
 import { GALLERY } from "@/data/gallery.generated";
 
 export function ServiceCard({ service, index }: { service: ServiceCategory; index: number }) {
-  const previews =
-    GALLERY.find((g) => g.category === service.slug)?.images.slice(0, 3) ?? [];
+  const previews = GALLERY.find((g) => g.category === service.slug)?.images.slice(0, 3) ?? [];
   // Per Variant A: card #5 (Personal Commissions, slug "commissions") spans 2
   // columns at md+ to match the prototype's wide layout.
   const isWide = service.slug === "commissions";
   return (
     <Card
-      className={`group relative overflow-hidden border-muted-soft/60 transition-transform duration-200 hover:-translate-y-1 ${
+      className={`group border-muted-soft/60 relative overflow-hidden transition-transform duration-200 hover:-translate-y-1 ${
         isWide ? "md:col-span-2 lg:col-span-2" : ""
-      } ${
-        !isWide && index % 2 === 1 ? "md:translate-y-8" : "md:translate-y-0"
-      }`}
+      } ${!isWide && index % 2 === 1 ? "md:translate-y-8" : "md:translate-y-0"}`}
     >
       <CardContent className="p-6">
         <div className="mb-5 grid grid-cols-3 gap-2">
@@ -2027,17 +2166,17 @@ export function ServiceCard({ service, index }: { service: ServiceCategory; inde
                 />
               ))
             : Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="aspect-square rounded-md bg-muted-soft/60" aria-hidden />
+                <div key={i} className="bg-muted-soft/60 aspect-square rounded-md" aria-hidden />
               ))}
         </div>
         <h3 className="font-display text-2xl">{service.title}</h3>
-        <p className="mt-2 text-sm text-muted">{service.blurb}</p>
+        <p className="text-muted mt-2 text-sm">{service.blurb}</p>
         <ul
-          className="mt-4 flex max-h-0 flex-wrap gap-2 overflow-hidden text-xs text-muted opacity-0 transition-all duration-200 group-hover:max-h-20 group-hover:opacity-100"
+          className="text-muted mt-4 flex max-h-0 flex-wrap gap-2 overflow-hidden text-xs opacity-0 transition-all duration-200 group-hover:max-h-20 group-hover:opacity-100"
           aria-label={`Techniques used for ${service.title}`}
         >
           {service.badges.map((b) => (
-            <li key={b} className="rounded-full bg-muted-soft/70 px-2 py-1">
+            <li key={b} className="bg-muted-soft/70 rounded-full px-2 py-1">
               {b}
             </li>
           ))}
@@ -2063,10 +2202,11 @@ export function Services() {
     <Section id="services" className="bg-paper-warm/40">
       <Container>
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.18em] text-pink">What I make</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">Services</h2>
-          <p className="mt-3 max-w-xl text-muted">
-            Tell me what you need — apparel, drinkware, signage, or a one-off — I'll match it to the right tools.
+          <p className="text-pink text-xs tracking-[0.18em] uppercase">What I make</p>
+          <h2 className="font-display mt-3 text-4xl md:text-5xl">Services</h2>
+          <p className="text-muted mt-3 max-w-xl">
+            Tell me what you need — apparel, drinkware, signage, or a one-off — I'll match it to the
+            right tools.
           </p>
         </Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -2094,6 +2234,7 @@ import { Services } from "@/components/sections/services";
 ```bash
 pnpm dev
 ```
+
 Scroll past hero. Confirm 5 cards render in an asymmetric stagger, hover reveals technique badges. Stop the server.
 
 - [ ] **Step 5: Commit**
@@ -2108,12 +2249,14 @@ git commit -m "feat(sections): services with asymmetric card stagger"
 ### Task 24: `<GalleryTile>` and `<Gallery>` with filter chips (TDD on filter logic)
 
 **Files:**
+
 - Create: `src/components/sections/gallery-tile.tsx`, `src/components/sections/gallery.tsx`, `tests/components/gallery-filter.test.tsx`
 - Modify: `src/App.tsx`
 
 - [ ] **Step 1: Write the failing test for filter behavior**
 
 Create `tests/components/gallery-filter.test.tsx`:
+
 ```tsx
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -2154,6 +2297,7 @@ describe("<Gallery>", () => {
 ```bash
 pnpm test tests/components/gallery-filter.test.tsx
 ```
+
 Expected: FAIL — module not found.
 
 - [ ] **Step 3: Implement `<GalleryTile>`**
@@ -2173,7 +2317,7 @@ export function GalleryTile({ image, category, onOpen }: Props) {
     <button
       type="button"
       onClick={onOpen}
-      className="group relative block overflow-hidden rounded-md bg-muted-soft/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink"
+      className="group bg-muted-soft/40 focus-visible:outline-pink relative block overflow-hidden rounded-md focus-visible:outline focus-visible:outline-2"
     >
       <img
         src={image.src}
@@ -2181,7 +2325,7 @@ export function GalleryTile({ image, category, onOpen }: Props) {
         loading="lazy"
         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
       />
-      <span className="pointer-events-none absolute right-2 top-2 rounded-full bg-pink px-2 py-1 text-xs text-paper opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+      <span className="bg-pink text-paper pointer-events-none absolute top-2 right-2 rounded-full px-2 py-1 text-xs opacity-0 transition-opacity duration-200 group-hover:opacity-100">
         {category}
       </span>
     </button>
@@ -2215,17 +2359,17 @@ export function Gallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const flat = useMemo(() => {
-    return GALLERY.flatMap((g) =>
-      g.images.map((img) => ({ ...img, category: g.category })),
-    ).filter((img) => filter === "all" || img.category === filter);
+    return GALLERY.flatMap((g) => g.images.map((img) => ({ ...img, category: g.category }))).filter(
+      (img) => filter === "all" || img.category === filter,
+    );
   }, [filter]);
 
   return (
     <Section id="gallery">
       <Container>
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.18em] text-pink">Recent work</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">Gallery</h2>
+          <p className="text-pink text-xs tracking-[0.18em] uppercase">Recent work</p>
+          <h2 className="font-display mt-3 text-4xl md:text-5xl">Gallery</h2>
         </Reveal>
 
         <ToggleGroup
@@ -2239,7 +2383,7 @@ export function Gallery() {
             <ToggleGroupItem
               key={c.value}
               value={c.value}
-              className="rounded-full border border-muted-soft px-4 py-2 text-sm data-[state=on]:bg-pink data-[state=on]:text-paper"
+              className="border-muted-soft data-[state=on]:bg-pink data-[state=on]:text-paper rounded-full border px-4 py-2 text-sm"
             >
               {c.label}
             </ToggleGroupItem>
@@ -2272,10 +2416,18 @@ export function Gallery() {
 (`<Lightbox>` is implemented in Task 25 — temporarily stub it as below to keep this task standalone.)
 
 Create `src/components/sections/lightbox.tsx` as a stub:
+
 ```tsx
 import type { GalleryImage } from "../../../scripts/generate-gallery-manifest";
-type Props = { images: (GalleryImage & { category: string })[]; index: number | null; onClose: () => void; onIndex: (i: number) => void };
-export function Lightbox(_props: Props) { return null; }
+type Props = {
+  images: (GalleryImage & { category: string })[];
+  index: number | null;
+  onClose: () => void;
+  onIndex: (i: number) => void;
+};
+export function Lightbox(_props: Props) {
+  return null;
+}
 ```
 
 - [ ] **Step 5: Run the test**
@@ -2283,6 +2435,7 @@ export function Lightbox(_props: Props) { return null; }
 ```bash
 pnpm test tests/components/gallery-filter.test.tsx
 ```
+
 Expected: 2 passed.
 
 - [ ] **Step 6: Wire into App.tsx**
@@ -2304,12 +2457,14 @@ git commit -m "feat(sections): gallery with filter chips"
 ### Task 25: `<Lightbox>` with focus trap, Escape, and arrow keys (TDD)
 
 **Files:**
+
 - Modify: `src/components/sections/lightbox.tsx`
 - Create: `tests/components/lightbox.test.tsx`
 
 - [ ] **Step 1: Write the failing test**
 
 Create `tests/components/lightbox.test.tsx`:
+
 ```tsx
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
@@ -2323,7 +2478,9 @@ const images = [
 
 describe("<Lightbox>", () => {
   it("renders nothing when index is null", () => {
-    const { container } = render(<Lightbox images={images} index={null} onClose={() => {}} onIndex={() => {}} />);
+    const { container } = render(
+      <Lightbox images={images} index={null} onClose={() => {}} onIndex={() => {}} />,
+    );
     expect(container.firstChild).toBeNull();
   });
 
@@ -2360,11 +2517,13 @@ describe("<Lightbox>", () => {
 ```bash
 pnpm test tests/components/lightbox.test.tsx
 ```
+
 Expected: 4 fail (1 passes — null branch).
 
 - [ ] **Step 3: Implement the real lightbox**
 
 Replace `src/components/sections/lightbox.tsx`:
+
 ```tsx
 import { useCallback, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -2407,14 +2566,14 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-      <DialogContent className="max-w-5xl border-none bg-ink/95 p-0 text-paper">
+      <DialogContent className="bg-ink/95 text-paper max-w-5xl border-none p-0">
         <div className="relative">
           <img src={image.src} alt={image.alt} className="mx-auto max-h-[85vh] w-auto" />
           <button
             type="button"
             aria-label="Previous image"
             onClick={() => advance(-1)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-paper/10 p-2 hover:bg-pink"
+            className="bg-paper/10 hover:bg-pink absolute top-1/2 left-3 -translate-y-1/2 rounded-full p-2"
           >
             <ChevronLeft className="size-6" />
           </button>
@@ -2422,7 +2581,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
             type="button"
             aria-label="Next image"
             onClick={() => advance(1)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-paper/10 p-2 hover:bg-pink"
+            className="bg-paper/10 hover:bg-pink absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-2"
           >
             <ChevronRight className="size-6" />
           </button>
@@ -2430,7 +2589,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
             type="button"
             aria-label="Close"
             onClick={onClose}
-            className="absolute right-3 top-3 rounded-full bg-paper/10 p-2 hover:bg-pink"
+            className="bg-paper/10 hover:bg-pink absolute top-3 right-3 rounded-full p-2"
           >
             <X className="size-5" />
           </button>
@@ -2446,6 +2605,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
 ```bash
 pnpm test tests/components/lightbox.test.tsx
 ```
+
 Expected: 5 passed.
 
 - [ ] **Step 5: Visual verification**
@@ -2464,6 +2624,7 @@ git commit -m "feat(gallery): lightbox with keyboard navigation and focus trap"
 ### Task 26: `<Testimonials>` section
 
 **Files:**
+
 - Create: `src/components/sections/testimonials.tsx`
 - Modify: `src/App.tsx`
 
@@ -2482,22 +2643,22 @@ export function Testimonials() {
     <Section id="testimonials" className="bg-paper-warm/40">
       <Container>
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.18em] text-pink">Kind words</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">What clients say</h2>
+          <p className="text-pink text-xs tracking-[0.18em] uppercase">Kind words</p>
+          <h2 className="font-display mt-3 text-4xl md:text-5xl">What clients say</h2>
         </Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <Card className="h-full border-muted-soft/60">
+              <Card className="border-muted-soft/60 h-full">
                 <CardContent className="p-6">
                   <p className="font-display text-xl leading-snug">"{t.quote}"</p>
-                  <p className="mt-4 text-sm text-muted">— {t.attribution}</p>
+                  <p className="text-muted mt-4 text-sm">— {t.attribution}</p>
                 </CardContent>
               </Card>
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-center text-xs italic text-muted">
+        <p className="text-muted mt-6 text-center text-xs italic">
           (Quotes above are placeholders — replace before launch.)
         </p>
       </Container>
@@ -2511,6 +2672,7 @@ export function Testimonials() {
 ```tsx
 // inside <main>: ... <Gallery /><Testimonials />
 ```
+
 ```bash
 pnpm dev   # verify
 git add -A
@@ -2522,6 +2684,7 @@ git commit -m "feat(sections): testimonials with placeholder marker"
 ### Task 27: `<About>` section
 
 **Files:**
+
 - Create: `src/components/sections/about.tsx`
 - Modify: `src/App.tsx`
 
@@ -2542,13 +2705,13 @@ export function About() {
           <img
             src={ABOUT.portraitSrc}
             alt="Portrait of Carina Wilson, founder of Homemade Carolina"
-            className="aspect-[4/5] w-full max-w-md rounded-md object-cover shadow-lg ring-1 ring-ink/10"
+            className="ring-ink/10 aspect-[4/5] w-full max-w-md rounded-md object-cover shadow-lg ring-1"
           />
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="text-xs uppercase tracking-[0.18em] text-pink">About</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">{ABOUT.heading}</h2>
-          <p className="mt-6 max-w-prose text-lg text-muted">{ABOUT.body}</p>
+          <p className="text-pink text-xs tracking-[0.18em] uppercase">About</p>
+          <h2 className="font-display mt-3 text-4xl md:text-5xl">{ABOUT.heading}</h2>
+          <p className="text-muted mt-6 max-w-prose text-lg">{ABOUT.body}</p>
         </Reveal>
       </Container>
     </Section>
@@ -2569,6 +2732,7 @@ git commit -m "feat(sections): about"
 ### Task 28: `<Contact>` section
 
 **Files:**
+
 - Create: `src/components/sections/contact.tsx`
 - Modify: `src/App.tsx`
 
@@ -2587,9 +2751,9 @@ export function Contact() {
     <Section id="contact" className="bg-ink text-paper">
       <Container className="text-center">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.18em] text-pink">Let's make something</p>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl">Get in touch</h2>
-          <p className="mt-4 text-paper/80">
+          <p className="text-pink text-xs tracking-[0.18em] uppercase">Let's make something</p>
+          <h2 className="font-display mt-3 text-4xl md:text-6xl">Get in touch</h2>
+          <p className="text-paper/80 mt-4">
             Pick up the phone, send a note, or slide into the DMs — whatever's easiest.
           </p>
         </Reveal>
@@ -2597,26 +2761,44 @@ export function Contact() {
         <Reveal delay={0.1}>
           <ul className="mt-12 flex flex-col items-center gap-6 text-lg">
             <li>
-              <a className="inline-flex items-center gap-3 hover:text-pink" href={`tel:${CONTACT.phoneE164}`}>
+              <a
+                className="hover:text-pink inline-flex items-center gap-3"
+                href={`tel:${CONTACT.phoneE164}`}
+              >
                 <Phone className="size-5" />
                 {CONTACT.phoneDisplay}
               </a>
             </li>
             <li>
-              <a className="inline-flex items-center gap-3 hover:text-pink" href={`mailto:${CONTACT.email}`}>
+              <a
+                className="hover:text-pink inline-flex items-center gap-3"
+                href={`mailto:${CONTACT.email}`}
+              >
                 <Mail className="size-5" />
                 {CONTACT.email}
               </a>
             </li>
             <li className="flex items-center gap-6">
-              <a aria-label="Instagram" className="inline-flex hover:text-pink" href={CONTACT.instagram} target="_blank" rel="noreferrer">
+              <a
+                aria-label="Instagram"
+                className="hover:text-pink inline-flex"
+                href={CONTACT.instagram}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Instagram className="size-6" />
               </a>
-              <a aria-label="Facebook" className="inline-flex hover:text-pink" href={CONTACT.facebook} target="_blank" rel="noreferrer">
+              <a
+                aria-label="Facebook"
+                className="hover:text-pink inline-flex"
+                href={CONTACT.facebook}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Facebook className="size-6" />
               </a>
             </li>
-            <li className="mt-4 inline-flex items-center gap-2 text-sm text-paper/60">
+            <li className="text-paper/60 mt-4 inline-flex items-center gap-2 text-sm">
               <MapPin className="size-4" />
               {CONTACT.shippingNote}
             </li>
@@ -2643,6 +2825,7 @@ git commit -m "feat(sections): contact"
 ### Task 29: Inject meta + JSON-LD into `index.html` and via runtime
 
 **Files:**
+
 - Modify: `index.html`
 - Create: `src/components/seo-jsonld.tsx`
 - Modify: `src/App.tsx`
@@ -2650,18 +2833,25 @@ git commit -m "feat(sections): contact"
 - [ ] **Step 1: Add full meta block to `index.html`**
 
 Replace the current `<head>` content (preserve the Google Fonts links from Task 6):
+
 ```html
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#FFFFFF" />
 
 <title>Homemade Carolina · Custom apparel, drinkware, signs & gifts in Belmont, NC</title>
-<meta name="description" content="Small-batch custom apparel, drinkware, signs, and gifts — printed, cut, and engraved in Belmont, NC. Personal commissions and small-business branding by Carina Wilson." />
+<meta
+  name="description"
+  content="Small-batch custom apparel, drinkware, signs, and gifts — printed, cut, and engraved in Belmont, NC. Personal commissions and small-business branding by Carina Wilson."
+/>
 <link rel="canonical" href="https://homemadecarolina.com/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Homemade Carolina · Custom apparel, drinkware, signs & gifts" />
-<meta property="og:description" content="Small-batch custom products made by hand in Belmont, NC." />
+<meta
+  property="og:description"
+  content="Small-batch custom products made by hand in Belmont, NC."
+/>
 <meta property="og:url" content="https://homemadecarolina.com/" />
 <meta property="og:image" content="https://homemadecarolina.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -2669,7 +2859,10 @@ Replace the current `<head>` content (preserve the Google Fonts links from Task 
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Homemade Carolina" />
-<meta name="twitter:description" content="Small-batch custom products made by hand in Belmont, NC." />
+<meta
+  name="twitter:description"
+  content="Small-batch custom products made by hand in Belmont, NC."
+/>
 <meta name="twitter:image" content="https://homemadecarolina.com/og-image.png" />
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -2726,6 +2919,7 @@ import { SeoJsonLd } from "@/components/seo-jsonld";
 ```bash
 pnpm dev
 ```
+
 Open DevTools → Elements → confirm the `<script type="application/ld+json">` tag exists in `<head>` with the LocalBusiness payload. Stop the server.
 
 - [ ] **Step 6: Commit**
@@ -2740,6 +2934,7 @@ git commit -m "feat(seo): meta tags + LocalBusiness JSON-LD"
 ### Task 30: Sitemap + robots.txt at build time
 
 **Files:**
+
 - Create: `scripts/generate-sitemap.ts`, `public/robots.txt`
 - Modify: `package.json`
 
@@ -2779,6 +2974,7 @@ Sitemap: https://homemadecarolina.com/sitemap.xml
 - [ ] **Step 3: Chain sitemap into prebuild**
 
 Update `package.json` `prebuild`:
+
 ```json
 "prebuild": "tsx scripts/generate-gallery-manifest.ts && tsx scripts/generate-sitemap.ts"
 ```
@@ -2790,6 +2986,7 @@ pnpm build
 ls public/sitemap.xml public/robots.txt
 cat public/sitemap.xml
 ```
+
 Expected: sitemap.xml lists the homepage URL with today's date.
 
 - [ ] **Step 5: Commit**
@@ -2804,6 +3001,7 @@ git commit -m "feat(seo): build-time sitemap.xml and robots.txt"
 ### Task 31: Add `vite-react-ssg` for SEO prerendering
 
 **Files:**
+
 - Modify: `package.json`, `src/main.tsx`, `vite.config.ts`
 
 - [ ] **Step 1: Install**
@@ -2827,6 +3025,7 @@ export const createRoot = ViteReactSSG(<App />);
 ```json
 "build": "tsx scripts/generate-gallery-manifest.ts && tsx scripts/generate-sitemap.ts && vite-react-ssg build"
 ```
+
 And remove the now-redundant `prebuild` line (keep `predev` for the gallery manifest).
 
 - [ ] **Step 4: Build and inspect output HTML**
@@ -2834,7 +3033,9 @@ And remove the now-redundant `prebuild` line (keep `predev` for the gallery mani
 ```bash
 pnpm build
 ```
+
 Open `dist/index.html` in a text editor and confirm:
+
 - The `<title>` is present
 - The hero headline text appears in the static HTML body
 - The JSON-LD `<script>` is present (if it isn't, mark this as Open Item — JSON-LD lives in `useEffect`, so SSG might not capture it. If missing, move JSON-LD into a static script tag in `index.html` populated at build time, OR move it to a `dangerouslySetInnerHTML` block rendered server-side. Document the chosen approach in README.)
@@ -2844,6 +3045,7 @@ Open `dist/index.html` in a text editor and confirm:
 ```bash
 pnpm dev
 ```
+
 Expected: site still loads at http://localhost:5173.
 
 - [ ] **Step 6: Commit**
@@ -2860,11 +3062,13 @@ git commit -m "feat(seo): prerender with vite-react-ssg"
 ### Task 32: Wire skip-to-content + audit focus order
 
 **Files:**
+
 - Modify: `src/App.tsx`
 
 - [ ] **Step 1: Confirm `<SkipToContent>` is the first interactive element rendered**
 
 Verify `App.tsx` order:
+
 ```tsx
 <SkipToContent />
 <Header />
@@ -2875,6 +3079,7 @@ Verify `App.tsx` order:
 - [ ] **Step 2: Manual keyboard tour**
 
 `pnpm dev`, then:
+
 - Press Tab from page load. The first focused element should be the skip link (visible).
 - Press Enter on the skip link → scrolls/focuses to `#main`.
 - Continue Tabbing: header logo → nav buttons → phone → mobile menu (hidden on desktop) → into hero CTAs → into each section.
@@ -2885,6 +3090,7 @@ If any element is unreachable or has no focus ring, fix with `focus-visible:` Ta
 - [ ] **Step 3: Test reduced-motion**
 
 Set OS-level "Reduce motion" preference (macOS: System Settings → Accessibility → Display → Reduce motion). Reload site. Confirm:
+
 - Hero stagger reveals are immediate fades (no rise)
 - Photo collage is static
 - Scribble underline appears immediately
@@ -2895,6 +3101,7 @@ Set OS-level "Reduce motion" preference (macOS: System Settings → Accessibilit
 In DevTools → Lighthouse → Mobile → Accessibility only. Goal: ≥ 95.
 
 If below, inspect specific failures:
+
 - Color contrast → adjust pink usage
 - Missing labels → add `aria-label`
 - Document any deviation in README under "Known a11y deviations"
@@ -2913,6 +3120,7 @@ git commit -m "chore(a11y): keyboard + reduced-motion + Lighthouse pass"
 ### Task 33: Final `App.tsx` composition
 
 **Files:**
+
 - Modify: `src/App.tsx`
 
 - [ ] **Step 1: Final composition**
@@ -2957,7 +3165,9 @@ pnpm lint
 pnpm build
 pnpm preview
 ```
+
 Open the preview URL. Walk the entire page top-to-bottom on desktop and (DevTools → Responsive) mobile. Confirm:
+
 - Header sticks, scroll bar fills with pink as you scroll
 - Each section reveals on scroll
 - Service card hover reveals technique badges
@@ -2977,19 +3187,22 @@ git commit -m "feat: final App composition with all sections"
 ### Task 34: README with dev + content-update instructions
 
 **Files:**
+
 - Create: `README.md`
 
 - [ ] **Step 1: Write README**
 
-```markdown
+````markdown
 # Homemade Carolina
 
 Small-business marketing site for Homemade Carolina (Belmont, NC).
 
 ## Stack
+
 Vite · React 18 · TypeScript · Tailwind CSS v4 · shadcn/ui · Framer Motion · vite-react-ssg
 
 ## Develop
+
 ```bash
 pnpm install
 pnpm dev          # http://localhost:5173
@@ -2998,14 +3211,18 @@ pnpm lint
 pnpm build        # produces dist/
 pnpm preview      # serves dist/
 ```
+````
 
 ## Adding gallery photos
+
 1. Drop a JPG / PNG / WebP into the right category folder under `public/gallery/<category>/`. Categories: `apparel`, `drinkware`, `signs`, `gifts`, `commissions`.
 2. Use a descriptive filename (e.g., `red-team-tee-front.jpg`) — it becomes the alt text base.
 3. Commit and redeploy. The build runs `scripts/generate-gallery-manifest.ts` which regenerates `src/data/gallery.generated.ts` from the folder contents.
 
 ## Updating content
+
 Plain TypeScript modules in `src/content/`:
+
 - `hero.ts` — headline, subhead, CTA labels
 - `services.ts` — 5 service categories, blurbs, technique badges
 - `testimonials.ts` — quotes (placeholders by default)
@@ -3015,30 +3232,36 @@ Plain TypeScript modules in `src/content/`:
 Edit, commit, redeploy.
 
 ## Updating the logo
+
 Replace `public/logo.png` (also `brand-assets/logo.png` for the source-of-truth copy).
 
 ## Updating brand colors / fonts
+
 Edit `src/index.css` `@theme` block. Font links live in `index.html`.
 
 ## Deploying
+
 Output is static `dist/`. Deploy to Vercel, Netlify, or Cloudflare Pages.
+
 - Build command: `pnpm build`
 - Output directory: `dist`
 - Set custom domain `homemadecarolina.com` in the host's dashboard.
-```
+
+````
 
 - [ ] **Step 2: Commit**
 
 ```bash
 git add README.md
 git commit -m "docs: README with dev + content-update instructions"
-```
+````
 
 ---
 
 ## Self-Review Notes
 
 Spec coverage check:
+
 - §1 Brand: Logo (Task 15), tone reflected in hero/services/about copy (Task 21) ✓
 - §2 Goals: Direct contact only, no form (Task 28); LocalBusiness schema for local SEO (Tasks 8, 29) ✓
 - §3 Site structure: All six sections (Tasks 22–28) + footer (Task 20) + sticky header (Task 18) + scroll progress bar (Task 19) ✓

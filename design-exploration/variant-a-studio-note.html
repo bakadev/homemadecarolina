@@ -1,516 +1,942 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Variant A · Studio Note · Homemade Carolina</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Variant A · Studio Note · Homemade Carolina</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Caveat:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+    />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        ink: "#1a1310",
-        paper: "#FAF7F2",
-        paper2: "#F2EDE4",
-        pink: "#EC4899",
-        pinksoft: "#FBD5E5",
-        muted: "#7A6E66",
-        rule: "#D9D2C7",
-      },
-      fontFamily: {
-        display: ['Fraunces', 'serif'],
-        script: ['Caveat', 'cursive'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-      },
-    },
-  },
-};
-</script>
-<style>
-  :root { color-scheme: light; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: #FAF7F2; color: #1a1310; }
-  .display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 30; }
-  .display-tight { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: -0.02em; }
-  .script { font-family: 'Caveat', cursive; }
-  .eyebrow { font-family: 'Inter'; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; font-size: 11px; }
-  .hairline { background-image: linear-gradient(90deg, transparent, #D9D2C7 20%, #D9D2C7 80%, transparent); height: 1px; }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#1a1310",
+              paper: "#FAF7F2",
+              paper2: "#F2EDE4",
+              pink: "#EC4899",
+              pinksoft: "#FBD5E5",
+              muted: "#7A6E66",
+              rule: "#D9D2C7",
+            },
+            fontFamily: {
+              display: ["Fraunces", "serif"],
+              script: ["Caveat", "cursive"],
+              body: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: #faf7f2;
+        color: #1a1310;
+      }
+      .display {
+        font-family: "Fraunces", serif;
+        font-variation-settings:
+          "opsz" 144,
+          "SOFT" 30;
+      }
+      .display-tight {
+        font-family: "Fraunces", serif;
+        font-variation-settings:
+          "opsz" 144,
+          "SOFT" 0;
+        letter-spacing: -0.02em;
+      }
+      .script {
+        font-family: "Caveat", cursive;
+      }
+      .eyebrow {
+        font-family: "Inter";
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+      .hairline {
+        background-image: linear-gradient(
+          90deg,
+          transparent,
+          #d9d2c7 20%,
+          #d9d2c7 80%,
+          transparent
+        );
+        height: 1px;
+      }
 
-  /* Photo placeholders — honest, tagged, with brand-warm gradients */
-  .ph {
-    position: relative; overflow: hidden; isolation: isolate;
-    background: linear-gradient(135deg, #F2EDE4 0%, #FBD5E5 100%);
-    border: 1px solid rgba(217, 210, 199, 0.6);
-  }
-  .ph::after {
-    content: attr(data-tag); position: absolute; bottom: 10px; left: 12px;
-    font-family: 'Caveat', cursive; font-size: 18px; color: #EC4899;
-    letter-spacing: 0.02em;
-  }
-  .ph::before {
-    content: ''; position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 30% 30%, rgba(236,72,153,0.08), transparent 60%),
-      radial-gradient(circle at 70% 70%, rgba(26,19,16,0.04), transparent 50%);
-  }
+      /* Photo placeholders — honest, tagged, with brand-warm gradients */
+      .ph {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        background: linear-gradient(135deg, #f2ede4 0%, #fbd5e5 100%);
+        border: 1px solid rgba(217, 210, 199, 0.6);
+      }
+      .ph::after {
+        content: attr(data-tag);
+        position: absolute;
+        bottom: 10px;
+        left: 12px;
+        font-family: "Caveat", cursive;
+        font-size: 18px;
+        color: #ec4899;
+        letter-spacing: 0.02em;
+      }
+      .ph::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(236, 72, 153, 0.08), transparent 60%),
+          radial-gradient(circle at 70% 70%, rgba(26, 19, 16, 0.04), transparent 50%);
+      }
 
-  /* Real-photo tile — uses <img> inside */
-  .tile { position: relative; overflow: hidden; isolation: isolate; }
-  .tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1); }
-  .tile:hover img { transform: scale(1.03); }
+      /* Real-photo tile — uses <img> inside */
+      .tile {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .tile:hover img {
+        transform: scale(1.03);
+      }
 
-  /* Pink scribble underline */
-  .scribble { position: relative; display: inline-block; }
-  .scribble svg { position: absolute; left: -4%; right: -4%; bottom: -10px; width: 108%; height: 14px; pointer-events: none; }
+      /* Pink scribble underline */
+      .scribble {
+        position: relative;
+        display: inline-block;
+      }
+      .scribble svg {
+        position: absolute;
+        left: -4%;
+        right: -4%;
+        bottom: -10px;
+        width: 108%;
+        height: 14px;
+        pointer-events: none;
+      }
 
-  /* Hover card lift */
-  .lift { transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1); }
-  .lift:hover { transform: translateY(-4px); }
+      /* Hover card lift */
+      .lift {
+        transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .lift:hover {
+        transform: translateY(-4px);
+      }
 
-  /* Sticky header progress (faux) */
-  .progress { width: 28%; }
+      /* Sticky header progress (faux) */
+      .progress {
+        width: 28%;
+      }
 
-  /* Reveal helper (no JS — just first-load fade-in) */
-  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  .rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .rise.d1 { animation-delay: 0.08s; }
-  .rise.d2 { animation-delay: 0.16s; }
-  .rise.d3 { animation-delay: 0.24s; }
+      /* Reveal helper (no JS — just first-load fade-in) */
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .rise {
+        animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .rise.d1 {
+        animation-delay: 0.08s;
+      }
+      .rise.d2 {
+        animation-delay: 0.16s;
+      }
+      .rise.d3 {
+        animation-delay: 0.24s;
+      }
 
-  /* Floating hero collage */
-  @keyframes float1 { 0%,100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(-3deg) translateY(-6px); } }
-  @keyframes float2 { 0%,100% { transform: rotate(4deg) translateY(0); } 50% { transform: rotate(4deg) translateY(6px); } }
-  @keyframes float3 { 0%,100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-4px); } }
-  .float1 { animation: float1 9s ease-in-out infinite; }
-  .float2 { animation: float2 10.5s ease-in-out infinite; }
-  .float3 { animation: float3 12s ease-in-out infinite; }
+      /* Floating hero collage */
+      @keyframes float1 {
+        0%,
+        100% {
+          transform: rotate(-3deg) translateY(0);
+        }
+        50% {
+          transform: rotate(-3deg) translateY(-6px);
+        }
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: rotate(4deg) translateY(0);
+        }
+        50% {
+          transform: rotate(4deg) translateY(6px);
+        }
+      }
+      @keyframes float3 {
+        0%,
+        100% {
+          transform: rotate(-2deg) translateY(0);
+        }
+        50% {
+          transform: rotate(-2deg) translateY(-4px);
+        }
+      }
+      .float1 {
+        animation: float1 9s ease-in-out infinite;
+      }
+      .float2 {
+        animation: float2 10.5s ease-in-out infinite;
+      }
+      .float3 {
+        animation: float3 12s ease-in-out infinite;
+      }
 
-  /* Service card — asymmetric stagger */
-  .stagger-down { transform: translateY(28px); }
+      /* Service card — asymmetric stagger */
+      .stagger-down {
+        transform: translateY(28px);
+      }
 
-  /* Variant chip — bottom-right so it doesn't cover the logo */
-  .variant-chip {
-    position: fixed; bottom: 18px; right: 18px; z-index: 60;
-    background: #1a1310; color: #FAF7F2;
-    font-family: 'Inter'; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    padding: 8px 14px; border-radius: 999px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  }
+      /* Variant chip — bottom-right so it doesn't cover the logo */
+      .variant-chip {
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        z-index: 60;
+        background: #1a1310;
+        color: #faf7f2;
+        font-family: "Inter";
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 8px 14px;
+        border-radius: 999px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
 
-  /* Filter chips */
-  .chip {
-    padding: 8px 18px; font-size: 14px; border-radius: 999px;
-    border: 1px solid #D9D2C7; background: transparent; color: #1a1310;
-    transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer;
-  }
-  .chip:hover { background: #FBD5E5; border-color: #FBD5E5; }
-  .chip.is-active { background: #EC4899; color: #FAF7F2; border-color: #EC4899; }
-  .chip.is-active:hover { background: #EC4899; }
+      /* Filter chips */
+      .chip {
+        padding: 8px 18px;
+        font-size: 14px;
+        border-radius: 999px;
+        border: 1px solid #d9d2c7;
+        background: transparent;
+        color: #1a1310;
+        transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+        cursor: pointer;
+      }
+      .chip:hover {
+        background: #fbd5e5;
+        border-color: #fbd5e5;
+      }
+      .chip.is-active {
+        background: #ec4899;
+        color: #faf7f2;
+        border-color: #ec4899;
+      }
+      .chip.is-active:hover {
+        background: #ec4899;
+      }
 
-  /* Gallery tile category overlay */
-  .gallery-tile { position: relative; overflow: hidden; isolation: isolate; }
-  .gallery-tile .cat-tag {
-    position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 999px;
-    background: #EC4899; color: #FAF7F2; font-size: 10px; letter-spacing: 0.12em;
-    text-transform: uppercase; font-weight: 500; opacity: 0; transition: opacity 0.2s;
-    pointer-events: none;
-  }
-  .gallery-tile:hover .cat-tag { opacity: 1; }
+      /* Gallery tile category overlay */
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .gallery-tile .cat-tag {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #ec4899;
+        color: #faf7f2;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 500;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+      }
+      .gallery-tile:hover .cat-tag {
+        opacity: 1;
+      }
 
-  /* Hidden tile state (filter) */
-  .gallery-tile[hidden] { display: none; }
+      /* Hidden tile state (filter) */
+      .gallery-tile[hidden] {
+        display: none;
+      }
 
-  @media (prefers-reduced-motion: reduce) {
-    .float1, .float2, .float3, .rise { animation: none !important; }
-  }
-</style>
-</head>
-<body class="antialiased">
+      @media (prefers-reduced-motion: reduce) {
+        .float1,
+        .float2,
+        .float3,
+        .rise {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Variant tag -->
+    <div class="variant-chip">Variant A · Studio Note</div>
 
-<!-- Variant tag -->
-<div class="variant-chip">Variant A · Studio Note</div>
-
-<!-- Sticky header -->
-<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur border-b border-rule/60">
-  <div class="absolute top-0 left-0 right-0 h-[3px] bg-rule/40">
-    <div class="h-full bg-pink progress"></div>
-  </div>
-  <div class="max-w-6xl mx-auto px-6 sm:px-8 py-4 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3" aria-label="Homemade Carolina home">
-      <img src="logo.png" alt="" aria-hidden="true" class="h-9 w-9" />
-      <span class="display text-xl tracking-tight leading-none">Homemade <span class="script text-pink text-2xl">Carolina</span></span>
-    </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm">
-      <a href="#services" class="hover:text-pink transition">Services</a>
-      <a href="#gallery" class="hover:text-pink transition">Gallery</a>
-      <a href="#about" class="hover:text-pink transition">About</a>
-      <a href="#contact" class="hover:text-pink transition">Contact</a>
-    </nav>
-    <a href="tel:+17044882918" class="hidden md:inline-flex items-center gap-2 text-sm hover:text-pink transition">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-      (704) 488-2918
-    </a>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- HERO -->
-<section class="relative pt-16 md:pt-24 pb-24">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8 grid md:grid-cols-12 gap-10 md:gap-14 items-center">
-    <div class="md:col-span-7">
-      <p class="eyebrow text-pink rise">Belmont, NC · Small batch</p>
-      <h1 class="display mt-5 leading-[1.02] text-[2.6rem] md:text-[5.4rem] rise d1">
-        Small batch.<br/>
-        Big
-        <span class="scribble">
-          <span class="script font-bold text-pink text-[3.4rem] md:text-[6.4rem] inline-block leading-none">love</span>
-          <svg viewBox="0 0 200 14" preserveAspectRatio="none">
-            <path d="M2 9 Q 50 2 100 7 T 198 8" fill="none" stroke="#EC4899" stroke-width="3" stroke-linecap="round"/>
+    <!-- Sticky header -->
+    <header class="bg-paper/85 border-rule/60 sticky top-0 z-40 border-b backdrop-blur">
+      <div class="bg-rule/40 absolute top-0 right-0 left-0 h-[3px]">
+        <div class="bg-pink progress h-full"></div>
+      </div>
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
+        <a href="#top" class="flex items-center gap-3" aria-label="Homemade Carolina home">
+          <img src="logo.png" alt="" aria-hidden="true" class="h-9 w-9" />
+          <span class="display text-xl leading-none tracking-tight"
+            >Homemade <span class="script text-pink text-2xl">Carolina</span></span
+          >
+        </a>
+        <nav class="hidden items-center gap-8 text-sm md:flex">
+          <a href="#services" class="hover:text-pink transition">Services</a>
+          <a href="#gallery" class="hover:text-pink transition">Gallery</a>
+          <a href="#about" class="hover:text-pink transition">About</a>
+          <a href="#contact" class="hover:text-pink transition">Contact</a>
+        </nav>
+        <a
+          href="tel:+17044882918"
+          class="hover:text-pink hidden items-center gap-2 text-sm transition md:inline-flex"
+        >
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+            />
           </svg>
-        </span>.
-      </h1>
-      <p class="mt-7 max-w-prose text-lg text-muted leading-relaxed rise d2">
-        Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the people you love. Small-batch, from Belmont, NC.
-      </p>
-      <div class="mt-9 flex flex-wrap items-center gap-5 rise d3">
-        <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-pink text-paper px-7 py-3.5 text-sm font-medium hover:bg-pink/90 transition">
-          Get a quote
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-        <a href="tel:+17044882918" class="text-sm hover:text-pink underline underline-offset-4 decoration-pink/40 hover:decoration-pink transition">
-          or call <span class="font-medium">(704) 488-2918</span>
-        </a>
-      </div>
-
-      <div class="mt-12 flex items-center gap-5 text-sm text-muted">
-        <span class="script text-2xl text-pink">↗</span>
-        <span class="italic">Personal commissions and small-business branding since the vendor-fair days.</span>
-      </div>
-    </div>
-
-    <!-- Hero photo collage -->
-    <div class="md:col-span-5 relative h-[420px] md:h-[520px] rise d2" aria-hidden="true">
-      <div class="tile float1 absolute rounded-md shadow-xl ring-1 ring-ink/5 w-44 h-44 md:w-56 md:h-56" style="top: 4%; left: 6%;">
-        <img src="../public/gallery/apparel/pretty-woman-wearing-tshirt.jpg" alt="" loading="eager" />
-      </div>
-      <div class="tile float2 absolute rounded-md shadow-xl ring-1 ring-ink/5 w-44 h-56 md:w-56 md:h-64" style="top: 28%; left: 50%;">
-        <img src="../public/gallery/drinkware/thermos.jpg" alt="" loading="eager" />
-      </div>
-      <div class="tile float3 absolute rounded-md shadow-xl ring-1 ring-ink/5 w-40 h-40 md:w-52 md:h-52" style="top: 62%; left: 14%;">
-        <img src="../public/gallery/signs/4719.jpg" alt="" loading="eager" />
-      </div>
-      <span class="absolute right-2 top-2 script text-pink text-2xl rotate-12">made fresh</span>
-    </div>
-  </div>
-</section>
-
-<div class="hairline mx-6 sm:mx-8"></div>
-
-<!-- SERVICES -->
-<section id="services" class="py-24 md:py-32 bg-paper2/40">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8">
-    <div class="grid md:grid-cols-12 gap-10 items-end">
-      <div class="md:col-span-7">
-        <p class="eyebrow text-pink">What I make</p>
-        <h2 class="display-tight mt-4 text-5xl md:text-7xl leading-[0.95]">Five things,<br/><span class="script text-pink text-[3.6rem] md:text-[6rem]">one workshop.</span></h2>
-      </div>
-      <div class="md:col-span-5">
-        <p class="text-muted text-lg leading-relaxed">Tell me what you need — apparel, drinkware, signage, or a one-off — and I'll match it to the right tools. Every piece comes off the same workbench.</p>
-      </div>
-    </div>
-
-    <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
-      <!-- Card 1 — Apparel -->
-      <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-6">
-        <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="tile aspect-square rounded ring-1 ring-rule/40">
-            <img src="../public/gallery/apparel/pretty-woman-wearing-tshirt.jpg" alt="Custom apparel sample" />
-          </div>
-          <div class="tile aspect-square rounded ring-1 ring-rule/40">
-            <img src="../public/gallery/apparel/still-life-spring-wardrobe-switch.jpg" alt="Custom apparel sample" />
-          </div>
-          <div class="ph aspect-square rounded" data-tag="hat"></div>
-        </div>
-        <h3 class="display text-2xl">Apparel & Accessories</h3>
-        <p class="mt-2 text-sm text-muted">Full-color shirts, hoodies, tote bags, hats, and bandanas — vibrant on any fabric color, soft to the touch, built to last 50+ washes.</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">DTF</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Cricut HTV</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Heat press</span>
-        </div>
-      </article>
-
-      <!-- Card 2 — Drinkware (staggered down) -->
-      <article class="lift md:stagger-down bg-paper rounded-md ring-1 ring-rule/50 p-6">
-        <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="tile aspect-square rounded ring-1 ring-rule/40">
-            <img src="../public/gallery/drinkware/thermos.jpg" alt="Custom drinkware sample" />
-          </div>
-          <div class="ph aspect-square rounded" data-tag="bottle"></div>
-          <div class="ph aspect-square rounded" data-tag="mug"></div>
-        </div>
-        <h3 class="display text-2xl">Drinkware</h3>
-        <p class="mt-2 text-sm text-muted">Tumblers, water bottles, wine glasses, and mugs with full-color wraps or permanent etched designs.</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">UV (rotary)</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Laser</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Cricut vinyl</span>
-        </div>
-      </article>
-
-      <!-- Card 3 — Signs -->
-      <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-6">
-        <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="tile aspect-square rounded ring-1 ring-rule/40">
-            <img src="../public/gallery/signs/4719.jpg" alt="Custom sign or decor piece" />
-          </div>
-          <div class="tile aspect-square rounded ring-1 ring-rule/40">
-            <img src="../public/gallery/signs/pelican.jpg" alt="Custom sign or decor piece" />
-          </div>
-          <div class="ph aspect-square rounded" data-tag="slate"></div>
-        </div>
-        <h3 class="display text-2xl">Signs & Decor</h3>
-        <p class="mt-2 text-sm text-muted">Wood signs, acrylic plaques, slate pieces, and event signage — engraved, printed, or both.</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Laser</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">UV flatbed</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Cricut</span>
-        </div>
-      </article>
-
-      <!-- Card 4 — Promo & Gifts (staggered down) -->
-      <article class="lift md:stagger-down bg-paper rounded-md ring-1 ring-rule/50 p-6">
-        <div class="grid grid-cols-3 gap-2 mb-5">
-          <div class="ph aspect-square rounded" data-tag="keychain"></div>
-          <div class="ph aspect-square rounded" data-tag="leather"></div>
-          <div class="ph aspect-square rounded" data-tag="package"></div>
-        </div>
-        <h3 class="display text-2xl">Promo & Corporate Gifts</h3>
-        <p class="mt-2 text-sm text-muted">Branded keychains, drinkware, leather goods, packaging, and matching apparel for events, launches, and gifting.</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">UV</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Laser</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">DTF</span>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">Cricut</span>
-        </div>
-      </article>
-
-      <!-- Card 5 — Personal Commissions (wide, double column) -->
-      <article class="lift bg-paper rounded-md ring-1 ring-rule/50 p-7 md:col-span-2 lg:col-span-2">
-        <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-5">
-          <div class="ph aspect-square rounded" data-tag="wedding"></div>
-          <div class="ph aspect-square rounded" data-tag="memorial"></div>
-          <div class="ph aspect-square rounded" data-tag="custom"></div>
-          <div class="ph aspect-square rounded" data-tag="gift"></div>
-          <div class="ph aspect-square rounded" data-tag="event"></div>
-          <div class="ph aspect-square rounded" data-tag="one-off"></div>
-        </div>
-        <div class="flex items-end justify-between gap-6 flex-wrap">
-          <div>
-            <h3 class="display text-2xl md:text-3xl">Personal Commissions</h3>
-            <p class="mt-2 text-sm text-muted max-w-md">Wedding decor, memorial pieces, custom gifts, and one-off ideas — bring me your concept and we'll make it.</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="text-xs px-2.5 py-1 rounded-full bg-paper2 text-muted">All four machines</span>
-            </div>
-          </div>
-          <a href="#contact" class="script text-pink text-2xl hover:underline whitespace-nowrap">↳ tell me your idea</a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<div class="hairline mx-6 sm:mx-8"></div>
-
-<!-- GALLERY -->
-<section id="gallery" class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
-      <div>
-        <p class="eyebrow text-pink">Recent work</p>
-        <h2 class="display-tight mt-4 text-5xl md:text-6xl">Gallery</h2>
-      </div>
-      <div id="gallery-filters" class="flex flex-wrap gap-2" role="group" aria-label="Filter gallery">
-        <button type="button" class="chip is-active" data-filter="all">All</button>
-        <button type="button" class="chip" data-filter="apparel">Apparel</button>
-        <button type="button" class="chip" data-filter="drinkware">Drinkware</button>
-        <button type="button" class="chip" data-filter="signs">Signs</button>
-        <button type="button" class="chip" data-filter="gifts">Gifts</button>
-      </div>
-    </div>
-
-    <div id="gallery-grid" class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-      <div class="gallery-tile aspect-[3/4] rounded-md ring-1 ring-rule/30" data-category="apparel">
-        <img src="../public/gallery/apparel/pretty-woman-wearing-tshirt.jpg" alt="Pretty woman wearing custom shirt" loading="lazy" class="w-full h-full object-cover" />
-        <span class="cat-tag">Apparel</span>
-      </div>
-      <div class="gallery-tile aspect-square rounded-md ring-1 ring-rule/30" data-category="drinkware">
-        <img src="../public/gallery/drinkware/thermos.jpg" alt="Custom thermos with heron design" loading="lazy" class="w-full h-full object-cover" />
-        <span class="cat-tag">Drinkware</span>
-      </div>
-      <div class="gallery-tile aspect-[4/5] rounded-md ring-1 ring-rule/30" data-category="signs">
-        <img src="../public/gallery/signs/4719.jpg" alt="Custom poster artwork" loading="lazy" class="w-full h-full object-cover" />
-        <span class="cat-tag">Signs</span>
-      </div>
-      <div class="gallery-tile ph aspect-square rounded-md" data-category="gifts" data-tag="keychain"></div>
-
-      <div class="gallery-tile aspect-[3/4] rounded-md ring-1 ring-rule/30" data-category="apparel">
-        <img src="../public/gallery/apparel/still-life-spring-wardrobe-switch.jpg" alt="Custom wardrobe pieces" loading="lazy" class="w-full h-full object-cover" />
-        <span class="cat-tag">Apparel</span>
-      </div>
-      <div class="gallery-tile ph aspect-square rounded-md" data-category="drinkware" data-tag="branded mug set"></div>
-      <div class="gallery-tile aspect-[4/5] rounded-md ring-1 ring-rule/30" data-category="signs">
-        <img src="../public/gallery/signs/pelican.jpg" alt="Pelican illustration" loading="lazy" class="w-full h-full object-cover" />
-        <span class="cat-tag">Signs</span>
-      </div>
-      <div class="gallery-tile ph aspect-square rounded-md" data-category="gifts" data-tag="leather wallet"></div>
-    </div>
-    <p id="gallery-empty" class="mt-10 hidden text-center text-sm italic text-muted">
-      No samples in this category yet — coming soon.
-    </p>
-    <p class="mt-6 text-center text-xs italic text-muted">Drop product photos into <code class="text-pink not-italic">/public/gallery/&lt;category&gt;/</code> — they'll auto-populate.</p>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="py-24 md:py-32 bg-paper2/40">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8 text-center">
-    <p class="eyebrow text-pink">Kind words</p>
-    <h2 class="display-tight mt-4 text-5xl md:text-6xl">Things people <span class="script text-pink text-[3.4rem] md:text-[5.4rem]">have said</span></h2>
-    <div class="mt-14 grid md:grid-cols-3 gap-6 md:gap-8 text-left">
-      <article class="bg-paper rounded-md ring-1 ring-rule/50 p-7">
-        <p class="display text-xl leading-snug">"<em>Glowing review goes here once a real client says something nice.</em>"</p>
-        <p class="mt-4 text-sm text-muted">— Future Happy Client</p>
-      </article>
-      <article class="bg-paper rounded-md ring-1 ring-rule/50 p-7">
-        <p class="display text-xl leading-snug">"<em>Replace this placeholder with a real quote about turnaround time or quality.</em>"</p>
-        <p class="mt-4 text-sm text-muted">— Future Happy Client</p>
-      </article>
-      <article class="bg-paper rounded-md ring-1 ring-rule/50 p-7">
-        <p class="display text-xl leading-snug">"<em>A short rave about how easy the commission process was, ideally with a name + city.</em>"</p>
-        <p class="mt-4 text-sm text-muted">— Future Happy Client</p>
-      </article>
-    </div>
-    <p class="mt-6 text-xs italic text-muted">Quotes are placeholders — replace before launch.</p>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8 grid md:grid-cols-12 gap-12 items-center">
-    <div class="md:col-span-5">
-      <div class="tile aspect-[4/5] rounded-md ring-1 ring-rule/40 shadow-lg">
-        <img src="../public/about/portrait.jpeg" alt="Carina Wilson, founder of Homemade Carolina" loading="lazy" />
-      </div>
-    </div>
-    <div class="md:col-span-7">
-      <p class="eyebrow text-pink">About</p>
-      <h2 class="display-tight mt-4 text-5xl md:text-6xl">Hi, I'm <span class="script text-pink text-[3.4rem] md:text-[5.4rem]">Carina.</span></h2>
-      <p class="mt-7 text-lg text-muted leading-relaxed max-w-prose">
-        I love to create and make things — from a quick custom gift for a friend to a full branding kit for a small business getting off the ground. Homemade Carolina started at vendor fairs around the Carolinas, and has grown into small-batch print, cut, and engraving work for personal commissions and growing local brands.
-      </p>
-      <p class="mt-4 text-lg text-muted leading-relaxed max-w-prose">
-        Every piece I ship is made by hand in my Belmont, NC studio.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-28 md:py-40 bg-ink text-paper">
-  <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-    <p class="eyebrow text-pink">Let's make something</p>
-    <h2 class="display-tight mt-4 text-5xl md:text-7xl">Get in <span class="script text-pink text-[3.6rem] md:text-[6rem]">touch.</span></h2>
-    <p class="mt-6 text-paper/70 text-lg max-w-xl mx-auto">Pick up the phone, send a note, or slide into the DMs — whatever's easiest for you.</p>
-
-    <ul class="mt-14 flex flex-col items-center gap-7 text-xl">
-      <li>
-        <a href="tel:+17044882918" class="inline-flex items-center gap-3 hover:text-pink transition">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
           (704) 488-2918
         </a>
-      </li>
-      <li>
-        <a href="mailto:carina@homemadecarolina.com" class="inline-flex items-center gap-3 hover:text-pink transition">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-          carina@homemadecarolina.com
-        </a>
-      </li>
-      <li class="flex items-center gap-7">
-        <a href="#" aria-label="Instagram" class="hover:text-pink transition">
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="#" aria-label="Facebook" class="hover:text-pink transition">
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-      </li>
-      <li class="mt-3 text-sm text-paper/60 flex items-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-        Based in Belmont, NC · Shipping nationwide
-      </li>
-    </ul>
-  </div>
-</section>
+      </div>
+    </header>
 
-</main>
+    <main id="top">
+      <!-- HERO -->
+      <section class="relative pt-16 pb-24 md:pt-24">
+        <div
+          class="mx-auto grid max-w-6xl items-center gap-10 px-6 sm:px-8 md:grid-cols-12 md:gap-14"
+        >
+          <div class="md:col-span-7">
+            <p class="eyebrow text-pink rise">Belmont, NC · Small batch</p>
+            <h1 class="display rise d1 mt-5 text-[2.6rem] leading-[1.02] md:text-[5.4rem]">
+              Small batch.<br />
+              Big
+              <span class="scribble">
+                <span
+                  class="script text-pink inline-block text-[3.4rem] leading-none font-bold md:text-[6.4rem]"
+                  >love</span
+                >
+                <svg viewBox="0 0 200 14" preserveAspectRatio="none">
+                  <path
+                    d="M2 9 Q 50 2 100 7 T 198 8"
+                    fill="none"
+                    stroke="#EC4899"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg> </span
+              >.
+            </h1>
+            <p class="text-muted rise d2 mt-7 max-w-prose text-lg leading-relaxed">
+              Custom shirts, tumblers, signs, and one-of-a-kind gifts for small businesses and the
+              people you love. Small-batch, from Belmont, NC.
+            </p>
+            <div class="rise d3 mt-9 flex flex-wrap items-center gap-5">
+              <a
+                href="#contact"
+                class="bg-pink text-paper hover:bg-pink/90 inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium transition"
+              >
+                Get a quote
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+              <a
+                href="tel:+17044882918"
+                class="hover:text-pink decoration-pink/40 hover:decoration-pink text-sm underline underline-offset-4 transition"
+              >
+                or call <span class="font-medium">(704) 488-2918</span>
+              </a>
+            </div>
 
-<!-- FOOTER -->
-<footer class="border-t border-rule/40 py-14 bg-paper">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8 grid md:grid-cols-3 gap-10 items-center">
-    <div>
-      <img src="logo.png" alt="Homemade Carolina" class="h-24 w-auto" />
-      <p class="mt-3 text-sm text-muted max-w-xs italic">Small-batch from Belmont, NC.</p>
-    </div>
-    <nav class="flex justify-center gap-8 text-sm" aria-label="Footer">
-      <a href="#services" class="hover:text-pink transition">Services</a>
-      <a href="#gallery" class="hover:text-pink transition">Gallery</a>
-      <a href="#about" class="hover:text-pink transition">About</a>
-      <a href="#contact" class="hover:text-pink transition">Contact</a>
-    </nav>
-    <p class="text-xs text-muted text-right">© 2026 Homemade Carolina · Belmont, NC</p>
-  </div>
-</footer>
+            <div class="text-muted mt-12 flex items-center gap-5 text-sm">
+              <span class="script text-pink text-2xl">↗</span>
+              <span class="italic"
+                >Personal commissions and small-business branding since the vendor-fair days.</span
+              >
+            </div>
+          </div>
 
-<!-- Gallery filter behavior -->
-<script>
-(function () {
-  var chips = document.querySelectorAll('#gallery-filters .chip');
-  var tiles = document.querySelectorAll('#gallery-grid .gallery-tile');
-  var emptyMsg = document.getElementById('gallery-empty');
+          <!-- Hero photo collage -->
+          <div class="rise d2 relative h-[420px] md:col-span-5 md:h-[520px]" aria-hidden="true">
+            <div
+              class="tile float1 ring-ink/5 absolute h-44 w-44 rounded-md shadow-xl ring-1 md:h-56 md:w-56"
+              style="top: 4%; left: 6%"
+            >
+              <img
+                src="../public/gallery/apparel/pretty-woman-wearing-tshirt.jpg"
+                alt=""
+                loading="eager"
+              />
+            </div>
+            <div
+              class="tile float2 ring-ink/5 absolute h-56 w-44 rounded-md shadow-xl ring-1 md:h-64 md:w-56"
+              style="top: 28%; left: 50%"
+            >
+              <img src="../public/gallery/drinkware/thermos.jpg" alt="" loading="eager" />
+            </div>
+            <div
+              class="tile float3 ring-ink/5 absolute h-40 w-40 rounded-md shadow-xl ring-1 md:h-52 md:w-52"
+              style="top: 62%; left: 14%"
+            >
+              <img src="../public/gallery/signs/4719.jpg" alt="" loading="eager" />
+            </div>
+            <span class="script text-pink absolute top-2 right-2 rotate-12 text-2xl"
+              >made fresh</span
+            >
+          </div>
+        </div>
+      </section>
 
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var filter = chip.getAttribute('data-filter');
+      <div class="hairline mx-6 sm:mx-8"></div>
 
-      chips.forEach(function (c) { c.classList.remove('is-active'); });
-      chip.classList.add('is-active');
+      <!-- SERVICES -->
+      <section id="services" class="bg-paper2/40 py-24 md:py-32">
+        <div class="mx-auto max-w-6xl px-6 sm:px-8">
+          <div class="grid items-end gap-10 md:grid-cols-12">
+            <div class="md:col-span-7">
+              <p class="eyebrow text-pink">What I make</p>
+              <h2 class="display-tight mt-4 text-5xl leading-[0.95] md:text-7xl">
+                Five things,<br /><span class="script text-pink text-[3.6rem] md:text-[6rem]"
+                  >one workshop.</span
+                >
+              </h2>
+            </div>
+            <div class="md:col-span-5">
+              <p class="text-muted text-lg leading-relaxed">
+                Tell me what you need — apparel, drinkware, signage, or a one-off — and I'll match
+                it to the right tools. Every piece comes off the same workbench.
+              </p>
+            </div>
+          </div>
 
-      var visibleCount = 0;
-      tiles.forEach(function (tile) {
-        var matches = filter === 'all' || tile.getAttribute('data-category') === filter;
-        if (matches) {
-          tile.removeAttribute('hidden');
-          visibleCount += 1;
-        } else {
-          tile.setAttribute('hidden', '');
-        }
-      });
+          <div class="mt-16 grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+            <!-- Card 1 — Apparel -->
+            <article class="lift bg-paper ring-rule/50 rounded-md p-6 ring-1">
+              <div class="mb-5 grid grid-cols-3 gap-2">
+                <div class="tile ring-rule/40 aspect-square rounded ring-1">
+                  <img
+                    src="../public/gallery/apparel/pretty-woman-wearing-tshirt.jpg"
+                    alt="Custom apparel sample"
+                  />
+                </div>
+                <div class="tile ring-rule/40 aspect-square rounded ring-1">
+                  <img
+                    src="../public/gallery/apparel/still-life-spring-wardrobe-switch.jpg"
+                    alt="Custom apparel sample"
+                  />
+                </div>
+                <div class="ph aspect-square rounded" data-tag="hat"></div>
+              </div>
+              <h3 class="display text-2xl">Apparel & Accessories</h3>
+              <p class="text-muted mt-2 text-sm">
+                Full-color shirts, hoodies, tote bags, hats, and bandanas — vibrant on any fabric
+                color, soft to the touch, built to last 50+ washes.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">DTF</span>
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs"
+                  >Cricut HTV</span
+                >
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs"
+                  >Heat press</span
+                >
+              </div>
+            </article>
 
-      if (emptyMsg) {
-        emptyMsg.classList.toggle('hidden', visibleCount > 0);
-      }
-    });
-  });
-})();
-</script>
+            <!-- Card 2 — Drinkware (staggered down) -->
+            <article class="lift md:stagger-down bg-paper ring-rule/50 rounded-md p-6 ring-1">
+              <div class="mb-5 grid grid-cols-3 gap-2">
+                <div class="tile ring-rule/40 aspect-square rounded ring-1">
+                  <img
+                    src="../public/gallery/drinkware/thermos.jpg"
+                    alt="Custom drinkware sample"
+                  />
+                </div>
+                <div class="ph aspect-square rounded" data-tag="bottle"></div>
+                <div class="ph aspect-square rounded" data-tag="mug"></div>
+              </div>
+              <h3 class="display text-2xl">Drinkware</h3>
+              <p class="text-muted mt-2 text-sm">
+                Tumblers, water bottles, wine glasses, and mugs with full-color wraps or permanent
+                etched designs.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs"
+                  >UV (rotary)</span
+                >
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">Laser</span>
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs"
+                  >Cricut vinyl</span
+                >
+              </div>
+            </article>
 
-</body>
+            <!-- Card 3 — Signs -->
+            <article class="lift bg-paper ring-rule/50 rounded-md p-6 ring-1">
+              <div class="mb-5 grid grid-cols-3 gap-2">
+                <div class="tile ring-rule/40 aspect-square rounded ring-1">
+                  <img src="../public/gallery/signs/4719.jpg" alt="Custom sign or decor piece" />
+                </div>
+                <div class="tile ring-rule/40 aspect-square rounded ring-1">
+                  <img src="../public/gallery/signs/pelican.jpg" alt="Custom sign or decor piece" />
+                </div>
+                <div class="ph aspect-square rounded" data-tag="slate"></div>
+              </div>
+              <h3 class="display text-2xl">Signs & Decor</h3>
+              <p class="text-muted mt-2 text-sm">
+                Wood signs, acrylic plaques, slate pieces, and event signage — engraved, printed, or
+                both.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">Laser</span>
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs"
+                  >UV flatbed</span
+                >
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">Cricut</span>
+              </div>
+            </article>
+
+            <!-- Card 4 — Promo & Gifts (staggered down) -->
+            <article class="lift md:stagger-down bg-paper ring-rule/50 rounded-md p-6 ring-1">
+              <div class="mb-5 grid grid-cols-3 gap-2">
+                <div class="ph aspect-square rounded" data-tag="keychain"></div>
+                <div class="ph aspect-square rounded" data-tag="leather"></div>
+                <div class="ph aspect-square rounded" data-tag="package"></div>
+              </div>
+              <h3 class="display text-2xl">Promo & Corporate Gifts</h3>
+              <p class="text-muted mt-2 text-sm">
+                Branded keychains, drinkware, leather goods, packaging, and matching apparel for
+                events, launches, and gifting.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">UV</span>
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">Laser</span>
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">DTF</span>
+                <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs">Cricut</span>
+              </div>
+            </article>
+
+            <!-- Card 5 — Personal Commissions (wide, double column) -->
+            <article
+              class="lift bg-paper ring-rule/50 rounded-md p-7 ring-1 md:col-span-2 lg:col-span-2"
+            >
+              <div class="mb-5 grid grid-cols-3 gap-2 md:grid-cols-6">
+                <div class="ph aspect-square rounded" data-tag="wedding"></div>
+                <div class="ph aspect-square rounded" data-tag="memorial"></div>
+                <div class="ph aspect-square rounded" data-tag="custom"></div>
+                <div class="ph aspect-square rounded" data-tag="gift"></div>
+                <div class="ph aspect-square rounded" data-tag="event"></div>
+                <div class="ph aspect-square rounded" data-tag="one-off"></div>
+              </div>
+              <div class="flex flex-wrap items-end justify-between gap-6">
+                <div>
+                  <h3 class="display text-2xl md:text-3xl">Personal Commissions</h3>
+                  <p class="text-muted mt-2 max-w-md text-sm">
+                    Wedding decor, memorial pieces, custom gifts, and one-off ideas — bring me your
+                    concept and we'll make it.
+                  </p>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="bg-paper2 text-muted rounded-full px-2.5 py-1 text-xs"
+                      >All four machines</span
+                    >
+                  </div>
+                </div>
+                <a
+                  href="#contact"
+                  class="script text-pink text-2xl whitespace-nowrap hover:underline"
+                  >↳ tell me your idea</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="hairline mx-6 sm:mx-8"></div>
+
+      <!-- GALLERY -->
+      <section id="gallery" class="py-24 md:py-32">
+        <div class="mx-auto max-w-6xl px-6 sm:px-8">
+          <div class="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div>
+              <p class="eyebrow text-pink">Recent work</p>
+              <h2 class="display-tight mt-4 text-5xl md:text-6xl">Gallery</h2>
+            </div>
+            <div
+              id="gallery-filters"
+              class="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Filter gallery"
+            >
+              <button type="button" class="chip is-active" data-filter="all">All</button>
+              <button type="button" class="chip" data-filter="apparel">Apparel</button>
+              <button type="button" class="chip" data-filter="drinkware">Drinkware</button>
+              <button type="button" class="chip" data-filter="signs">Signs</button>
+              <button type="button" class="chip" data-filter="gifts">Gifts</button>
+            </div>
+          </div>
+
+          <div
+            id="gallery-grid"
+            class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
+          >
+            <div
+              class="gallery-tile ring-rule/30 aspect-[3/4] rounded-md ring-1"
+              data-category="apparel"
+            >
+              <img
+                src="../public/gallery/apparel/pretty-woman-wearing-tshirt.jpg"
+                alt="Pretty woman wearing custom shirt"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+              <span class="cat-tag">Apparel</span>
+            </div>
+            <div
+              class="gallery-tile ring-rule/30 aspect-square rounded-md ring-1"
+              data-category="drinkware"
+            >
+              <img
+                src="../public/gallery/drinkware/thermos.jpg"
+                alt="Custom thermos with heron design"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+              <span class="cat-tag">Drinkware</span>
+            </div>
+            <div
+              class="gallery-tile ring-rule/30 aspect-[4/5] rounded-md ring-1"
+              data-category="signs"
+            >
+              <img
+                src="../public/gallery/signs/4719.jpg"
+                alt="Custom poster artwork"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+              <span class="cat-tag">Signs</span>
+            </div>
+            <div
+              class="gallery-tile ph aspect-square rounded-md"
+              data-category="gifts"
+              data-tag="keychain"
+            ></div>
+
+            <div
+              class="gallery-tile ring-rule/30 aspect-[3/4] rounded-md ring-1"
+              data-category="apparel"
+            >
+              <img
+                src="../public/gallery/apparel/still-life-spring-wardrobe-switch.jpg"
+                alt="Custom wardrobe pieces"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+              <span class="cat-tag">Apparel</span>
+            </div>
+            <div
+              class="gallery-tile ph aspect-square rounded-md"
+              data-category="drinkware"
+              data-tag="branded mug set"
+            ></div>
+            <div
+              class="gallery-tile ring-rule/30 aspect-[4/5] rounded-md ring-1"
+              data-category="signs"
+            >
+              <img
+                src="../public/gallery/signs/pelican.jpg"
+                alt="Pelican illustration"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+              <span class="cat-tag">Signs</span>
+            </div>
+            <div
+              class="gallery-tile ph aspect-square rounded-md"
+              data-category="gifts"
+              data-tag="leather wallet"
+            ></div>
+          </div>
+          <p id="gallery-empty" class="text-muted mt-10 hidden text-center text-sm italic">
+            No samples in this category yet — coming soon.
+          </p>
+          <p class="text-muted mt-6 text-center text-xs italic">
+            Drop product photos into
+            <code class="text-pink not-italic">/public/gallery/&lt;category&gt;/</code> — they'll
+            auto-populate.
+          </p>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="bg-paper2/40 py-24 md:py-32">
+        <div class="mx-auto max-w-6xl px-6 text-center sm:px-8">
+          <p class="eyebrow text-pink">Kind words</p>
+          <h2 class="display-tight mt-4 text-5xl md:text-6xl">
+            Things people
+            <span class="script text-pink text-[3.4rem] md:text-[5.4rem]">have said</span>
+          </h2>
+          <div class="mt-14 grid gap-6 text-left md:grid-cols-3 md:gap-8">
+            <article class="bg-paper ring-rule/50 rounded-md p-7 ring-1">
+              <p class="display text-xl leading-snug">
+                "<em>Glowing review goes here once a real client says something nice.</em>"
+              </p>
+              <p class="text-muted mt-4 text-sm">— Future Happy Client</p>
+            </article>
+            <article class="bg-paper ring-rule/50 rounded-md p-7 ring-1">
+              <p class="display text-xl leading-snug">
+                "<em
+                  >Replace this placeholder with a real quote about turnaround time or quality.</em
+                >"
+              </p>
+              <p class="text-muted mt-4 text-sm">— Future Happy Client</p>
+            </article>
+            <article class="bg-paper ring-rule/50 rounded-md p-7 ring-1">
+              <p class="display text-xl leading-snug">
+                "<em
+                  >A short rave about how easy the commission process was, ideally with a name +
+                  city.</em
+                >"
+              </p>
+              <p class="text-muted mt-4 text-sm">— Future Happy Client</p>
+            </article>
+          </div>
+          <p class="text-muted mt-6 text-xs italic">
+            Quotes are placeholders — replace before launch.
+          </p>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="py-24 md:py-32">
+        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 sm:px-8 md:grid-cols-12">
+          <div class="md:col-span-5">
+            <div class="tile ring-rule/40 aspect-[4/5] rounded-md shadow-lg ring-1">
+              <img
+                src="../public/about/portrait.jpeg"
+                alt="Carina Wilson, founder of Homemade Carolina"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="md:col-span-7">
+            <p class="eyebrow text-pink">About</p>
+            <h2 class="display-tight mt-4 text-5xl md:text-6xl">
+              Hi, I'm <span class="script text-pink text-[3.4rem] md:text-[5.4rem]">Carina.</span>
+            </h2>
+            <p class="text-muted mt-7 max-w-prose text-lg leading-relaxed">
+              I love to create and make things — from a quick custom gift for a friend to a full
+              branding kit for a small business getting off the ground. Homemade Carolina started at
+              vendor fairs around the Carolinas, and has grown into small-batch print, cut, and
+              engraving work for personal commissions and growing local brands.
+            </p>
+            <p class="text-muted mt-4 max-w-prose text-lg leading-relaxed">
+              Every piece I ship is made by hand in my Belmont, NC studio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="bg-ink text-paper py-28 md:py-40">
+        <div class="mx-auto max-w-4xl px-6 text-center sm:px-8">
+          <p class="eyebrow text-pink">Let's make something</p>
+          <h2 class="display-tight mt-4 text-5xl md:text-7xl">
+            Get in <span class="script text-pink text-[3.6rem] md:text-[6rem]">touch.</span>
+          </h2>
+          <p class="text-paper/70 mx-auto mt-6 max-w-xl text-lg">
+            Pick up the phone, send a note, or slide into the DMs — whatever's easiest for you.
+          </p>
+
+          <ul class="mt-14 flex flex-col items-center gap-7 text-xl">
+            <li>
+              <a
+                href="tel:+17044882918"
+                class="hover:text-pink inline-flex items-center gap-3 transition"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                  />
+                </svg>
+                (704) 488-2918
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:carina@homemadecarolina.com"
+                class="hover:text-pink inline-flex items-center gap-3 transition"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                  />
+                </svg>
+                carina@homemadecarolina.com
+              </a>
+            </li>
+            <li class="flex items-center gap-7">
+              <a href="#" aria-label="Instagram" class="hover:text-pink transition">
+                <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook" class="hover:text-pink transition">
+                <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="text-paper/60 mt-3 flex items-center gap-2 text-sm">
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                />
+              </svg>
+              Based in Belmont, NC · Shipping nationwide
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-rule/40 bg-paper border-t py-14">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-6 sm:px-8 md:grid-cols-3">
+        <div>
+          <img src="logo.png" alt="Homemade Carolina" class="h-24 w-auto" />
+          <p class="text-muted mt-3 max-w-xs text-sm italic">Small-batch from Belmont, NC.</p>
+        </div>
+        <nav class="flex justify-center gap-8 text-sm" aria-label="Footer">
+          <a href="#services" class="hover:text-pink transition">Services</a>
+          <a href="#gallery" class="hover:text-pink transition">Gallery</a>
+          <a href="#about" class="hover:text-pink transition">About</a>
+          <a href="#contact" class="hover:text-pink transition">Contact</a>
+        </nav>
+        <p class="text-muted text-right text-xs">© 2026 Homemade Carolina · Belmont, NC</p>
+      </div>
+    </footer>
+
+    <!-- Gallery filter behavior -->
+    <script>
+      (function () {
+        var chips = document.querySelectorAll("#gallery-filters .chip");
+        var tiles = document.querySelectorAll("#gallery-grid .gallery-tile");
+        var emptyMsg = document.getElementById("gallery-empty");
+
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            var filter = chip.getAttribute("data-filter");
+
+            chips.forEach(function (c) {
+              c.classList.remove("is-active");
+            });
+            chip.classList.add("is-active");
+
+            var visibleCount = 0;
+            tiles.forEach(function (tile) {
+              var matches = filter === "all" || tile.getAttribute("data-category") === filter;
+              if (matches) {
+                tile.removeAttribute("hidden");
+                visibleCount += 1;
+              } else {
+                tile.setAttribute("hidden", "");
+              }
+            });
+
+            if (emptyMsg) {
+              emptyMsg.classList.toggle("hidden", visibleCount > 0);
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>

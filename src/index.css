@@ -2,13 +2,13 @@
 
 @theme {
   /* Brand color tokens — DESIGN_TOKEN values get refined in Task 5 */
-  --color-ink: #0E0E0E;
-  --color-paper: #FFFFFF;
-  --color-paper-warm: #FAF7F2;
-  --color-pink: #FF4D8D;          /* DESIGN_TOKEN: replaced with chosen variant's pink */
-  --color-pink-soft: #FFD9E5;
-  --color-muted: #6B6B6B;
-  --color-muted-soft: #E8E6E2;
+  --color-ink: #0e0e0e;
+  --color-paper: #ffffff;
+  --color-paper-warm: #faf7f2;
+  --color-pink: #ff4d8d; /* DESIGN_TOKEN: replaced with chosen variant's pink */
+  --color-pink-soft: #ffd9e5;
+  --color-muted: #6b6b6b;
+  --color-muted-soft: #e8e6e2;
 
   /* Font tokens — DESIGN_TOKEN values get refined in Task 6 */
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
@@ -18,5 +18,11 @@
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html { scroll-behavior: smooth; }
-body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
