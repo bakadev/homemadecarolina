@@ -7,7 +7,7 @@
     "dev": "vite",
     "predev": "tsx scripts/generate-gallery-manifest.ts",
     "build": "vite build",
-    "prebuild": "tsx scripts/generate-gallery-manifest.ts",
+    "prebuild": "tsx scripts/generate-gallery-manifest.ts && tsx scripts/generate-sitemap.ts",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
