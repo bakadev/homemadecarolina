@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 .claude/
+dist
+.env*.local
+src/data/gallery.generated.ts
+public/sitemap.xml
