@@ -30,7 +30,7 @@ export function MobileNav() {
                 setOpen(false);
                 setTimeout(() => scrollToAnchor(l.id), 50);
               }}
-              className="font-display text-left text-2xl"
+              className="font-display focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm text-left text-2xl"
             >
               {l.label}
             </button>

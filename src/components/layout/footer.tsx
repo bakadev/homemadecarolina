@@ -29,7 +29,7 @@ export function Footer() {
               key={l.id}
               type="button"
               onClick={() => scrollToAnchor(l.id)}
-              className="hover:text-pink text-sm"
+              className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm text-sm"
             >
               {l.label}
             </button>
@@ -37,10 +37,10 @@ export function Footer() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <a aria-label="Instagram" href={CONTACT.instagram} target="_blank" rel="noreferrer">
+          <a aria-label="Instagram" href={CONTACT.instagram} target="_blank" rel="noreferrer" className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm">
             <InstagramIcon className="hover:text-pink size-5" />
           </a>
-          <a aria-label="Facebook" href={CONTACT.facebook} target="_blank" rel="noreferrer">
+          <a aria-label="Facebook" href={CONTACT.facebook} target="_blank" rel="noreferrer" className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm">
             <FacebookIcon className="hover:text-pink size-5" />
           </a>
         </div>

@@ -41,7 +41,7 @@ export function Header() {
               key={l.id}
               type="button"
               onClick={() => scrollToAnchor(l.id)}
-              className="hover:text-pink text-sm tracking-wide uppercase"
+              className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm text-sm tracking-wide uppercase"
             >
               {l.label}
             </button>
@@ -51,7 +51,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${CONTACT.phoneE164}`}
-            className="hover:text-pink hidden items-center gap-2 text-sm md:inline-flex"
+            className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm hidden items-center gap-2 text-sm md:inline-flex"
           >
             <Phone className="size-4" />
             {CONTACT.phoneDisplay}

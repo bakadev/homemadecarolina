@@ -20,22 +20,22 @@ export function Contact() {
         <Reveal delay={0.1}>
           <ul className="mt-12 flex flex-col items-center gap-6 text-lg">
             <li>
-              <a className="hover:text-pink inline-flex items-center gap-3" href={`tel:${CONTACT.phoneE164}`}>
+              <a className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm inline-flex items-center gap-3" href={`tel:${CONTACT.phoneE164}`}>
                 <Phone className="size-5" />
                 {CONTACT.phoneDisplay}
               </a>
             </li>
             <li>
-              <a className="hover:text-pink inline-flex items-center gap-3" href={`mailto:${CONTACT.email}`}>
+              <a className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm inline-flex items-center gap-3" href={`mailto:${CONTACT.email}`}>
                 <Mail className="size-5" />
                 {CONTACT.email}
               </a>
             </li>
             <li className="flex items-center gap-6">
-              <a aria-label="Instagram" className="hover:text-pink inline-flex" href={CONTACT.instagram} target="_blank" rel="noreferrer">
+              <a aria-label="Instagram" className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm inline-flex" href={CONTACT.instagram} target="_blank" rel="noreferrer">
                 <InstagramIcon className="size-6" />
               </a>
-              <a aria-label="Facebook" className="hover:text-pink inline-flex" href={CONTACT.facebook} target="_blank" rel="noreferrer">
+              <a aria-label="Facebook" className="hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm inline-flex" href={CONTACT.facebook} target="_blank" rel="noreferrer">
                 <FacebookIcon className="size-6" />
               </a>
             </li>

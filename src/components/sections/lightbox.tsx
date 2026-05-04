@@ -46,7 +46,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
             type="button"
             aria-label="Previous image"
             onClick={() => advance(-1)}
-            className="bg-paper/10 hover:bg-pink absolute top-1/2 left-3 -translate-y-1/2 rounded-full p-2"
+            className="bg-paper/10 hover:bg-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 absolute top-1/2 left-3 -translate-y-1/2 rounded-full p-2"
           >
             <ChevronLeft className="size-6" />
           </button>
@@ -54,7 +54,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
             type="button"
             aria-label="Next image"
             onClick={() => advance(1)}
-            className="bg-paper/10 hover:bg-pink absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-2"
+            className="bg-paper/10 hover:bg-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-2"
           >
             <ChevronRight className="size-6" />
           </button>
@@ -62,7 +62,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
             type="button"
             aria-label="Close"
             onClick={onClose}
-            className="bg-paper/10 hover:bg-pink absolute top-3 right-3 rounded-full p-2"
+            className="bg-paper/10 hover:bg-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 absolute top-3 right-3 rounded-full p-2"
           >
             <X className="size-5" />
           </button>
