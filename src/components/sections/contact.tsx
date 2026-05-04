@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/brand-icons";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
@@ -32,10 +33,10 @@ export function Contact() {
             </li>
             <li className="flex items-center gap-6">
               <a aria-label="Instagram" className="hover:text-pink inline-flex" href={CONTACT.instagram} target="_blank" rel="noreferrer">
-                <Instagram className="size-6" />
+                <InstagramIcon className="size-6" />
               </a>
               <a aria-label="Facebook" className="hover:text-pink inline-flex" href={CONTACT.facebook} target="_blank" rel="noreferrer">
-                <Facebook className="size-6" />
+                <FacebookIcon className="size-6" />
               </a>
             </li>
             <li className="text-paper/60 mt-4 inline-flex items-center gap-2 text-sm">

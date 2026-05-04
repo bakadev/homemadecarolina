@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/brand-icons";
 import { Container } from "./container";
 import { Logo } from "./logo";
 import { CONTACT } from "@/content/contact";
@@ -38,10 +38,10 @@ export function Footer() {
 
         <div className="flex items-center gap-4">
           <a aria-label="Instagram" href={CONTACT.instagram} target="_blank" rel="noreferrer">
-            <Instagram className="hover:text-pink size-5" />
+            <InstagramIcon className="hover:text-pink size-5" />
           </a>
           <a aria-label="Facebook" href={CONTACT.facebook} target="_blank" rel="noreferrer">
-            <Facebook className="hover:text-pink size-5" />
+            <FacebookIcon className="hover:text-pink size-5" />
           </a>
         </div>
       </Container>
