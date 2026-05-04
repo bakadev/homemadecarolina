@@ -6,30 +6,25 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Brand color tokens — DESIGN_TOKEN values get refined in Task 5 */
-  --color-ink: #0e0e0e;
-  --color-paper: #ffffff;
-  --color-paper-warm: #faf7f2;
-  --color-pink: #ff4d8d; /* DESIGN_TOKEN: replaced with chosen variant's pink */
-  --color-pink-soft: #ffd9e5;
-  --color-muted: #6b6b6b;
-  --color-muted-soft: #e8e6e2;
+  /* Brand colors — Variant A · Studio Note (locked 2026-05-03) */
+  --color-ink: #1a1310; /* warm off-black */
+  --color-paper: #faf7f2; /* warm cream */
+  --color-paper-2: #f2ede4; /* alt section background */
+  --color-pink: #ec4899; /* hot-pink accent */
+  --color-pink-soft: #fbd5e5; /* soft fill for hover/accents */
+  --color-muted: #7a6e66; /* body muted variant */
+  --color-rule: #d9d2c7; /* hairline rules / card borders */
 
-  /* Font tokens — DESIGN_TOKEN values get refined in Task 6 */
-  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  /* Fonts — see Task 6 */
+  --font-display: "Fraunces", ui-serif, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-script: "Caveat", "Homemade Apple", cursive;
+  --font-script: "Caveat", cursive;
 
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
   scroll-behavior: smooth;
-}
-body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-body);
 }
 
 @theme inline {
@@ -76,8 +71,8 @@ body {
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: #faf7f2; /* Variant A: warm cream paper */
+  --foreground: #1a1310; /* Variant A: warm off-black ink */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -150,8 +145,27 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
   }
   html {
     @apply font-sans;
   }
+}
+
+/* Fraunces variable-axis utility classes — Task 6 */
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 30;
+}
+.font-display-tight {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 0;
+  letter-spacing: -0.02em;
+}
+.font-script {
+  font-family: var(--font-script);
 }
