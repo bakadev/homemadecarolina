@@ -43,7 +43,7 @@ export function Gallery() {
             <ToggleGroupItem
               key={c.value}
               value={c.value}
-              className="border-muted-soft data-[state=on]:bg-pink data-[state=on]:text-paper rounded-full border px-4 py-2 text-sm"
+              className="border-rule hover:bg-pink-soft aria-pressed:!bg-pink aria-pressed:!text-paper aria-pressed:!border-pink rounded-full border px-4 py-2 text-sm transition-colors"
             >
               {c.label}
             </ToggleGroupItem>
