@@ -4,7 +4,7 @@ import { useReveal } from "@/hooks/use-reveal";
 import { revealVariants } from "@/lib/motion";
 import { type ReactNode } from "react";
 
-export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+export function Reveal({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
   const reduced = useReducedMotion();
   const { ref, shown } = useReveal<HTMLDivElement>();
   const variants = revealVariants({ reducedMotion: reduced });
@@ -15,6 +15,7 @@ export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: n
       animate={shown ? "visible" : "hidden"}
       transition={{ delay }}
       variants={variants}
+      className={className}
     >
       {children}
     </motion.div>

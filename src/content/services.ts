@@ -39,6 +39,6 @@ export const SERVICES: ServiceCategory[] = [
     title: "Personal Commissions",
     blurb:
       "Wedding decor, memorial pieces, custom gifts, and one-off ideas — bring me your concept and we'll make it.",
-    badges: ["All four machines"],
+    badges: ["Custom"],
   },
 ];

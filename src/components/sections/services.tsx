@@ -18,8 +18,12 @@ export function Services() {
         </Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 0.1}>
-              <ServiceCard service={s} index={i} />
+            <Reveal
+              key={s.slug}
+              delay={i * 0.1}
+              className={s.slug === "commissions" ? "md:col-span-2 lg:col-span-2" : undefined}
+            >
+              <ServiceCard service={s} />
             </Reveal>
           ))}
         </div>

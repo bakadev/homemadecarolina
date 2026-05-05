@@ -49,7 +49,7 @@ export function Hero() {
               </Button>
               <a
                 href={`tel:${CONTACT.phoneE164}`}
-                className="text-ink hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm inline-flex items-center gap-2 text-sm"
+                className="text-ink hover:text-pink focus-visible:outline focus-visible:outline-pink focus-visible:outline-offset-2 rounded-sm inline-flex items-center gap-2 text-sm"
               >
                 <Phone className="size-4" />
                 {HERO.ctas.secondaryLabel} {CONTACT.phoneDisplay}
