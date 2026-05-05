@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { ABOUT } from "@/content/about";
+import { asset } from "@/lib/asset";
 
 export function About() {
   return (
@@ -9,7 +10,7 @@ export function About() {
       <Container className="grid items-center gap-10 md:grid-cols-2">
         <Reveal>
           <img
-            src={ABOUT.portraitSrc}
+            src={asset(ABOUT.portraitSrc)}
             alt="Portrait of Carina Wilson, founder of Homemade Carolina"
             className="ring-ink/10 aspect-[4/5] w-full max-w-md rounded-md object-cover shadow-lg ring-1"
           />

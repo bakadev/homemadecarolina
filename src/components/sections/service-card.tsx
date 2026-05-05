@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { type ServiceCategory } from "@/content/services";
 import { GALLERY } from "@/data/gallery.generated";
+import { asset } from "@/lib/asset";
 
 export function ServiceCard({ service }: { service: ServiceCategory }) {
   const previews = GALLERY.find((g) => g.category === service.slug)?.images.slice(0, 3) ?? [];
@@ -14,7 +15,7 @@ export function ServiceCard({ service }: { service: ServiceCategory }) {
             ? previews.map((img) => (
                 <img
                   key={img.src}
-                  src={img.src}
+                  src={asset(img.src)}
                   alt={img.alt}
                   className="aspect-square rounded-md object-cover w-24 h-24"
                 />

@@ -1,4 +1,5 @@
 import type { GalleryImage } from "../../../scripts/generate-gallery-manifest";
+import { asset } from "@/lib/asset";
 
 type Props = { image: GalleryImage; category: string; onOpen: () => void };
 
@@ -10,7 +11,7 @@ export function GalleryTile({ image, category, onOpen }: Props) {
       className="group bg-muted-soft/40 focus-visible:outline-pink relative block overflow-hidden rounded-md focus-visible:outline focus-visible:outline-2"
     >
       <img
-        src={image.src}
+        src={asset(image.src)}
         alt={image.alt}
         loading="lazy"
         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"

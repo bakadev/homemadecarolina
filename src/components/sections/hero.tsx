@@ -6,12 +6,13 @@ import { Reveal } from "@/components/motion/reveal";
 import { HERO } from "@/content/hero";
 import { CONTACT } from "@/content/contact";
 import { scrollToAnchor } from "@/lib/scroll";
+import { asset } from "@/lib/asset";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const COLLAGE = [
-  { src: "/gallery/apparel/pretty-woman-wearing-tshirt.jpg", alt: "Custom apparel sample", rot: -3, top: 4, left: 6 },
-  { src: "/gallery/drinkware/thermos.jpg", alt: "Custom drinkware sample", rot: 4, top: 28, left: 50 },
-  { src: "/gallery/signs/4719.jpg", alt: "Custom sign sample", rot: -2, top: 60, left: 14 },
+  { src: asset("/gallery/apparel/pretty-woman-wearing-tshirt.jpg"), alt: "Custom apparel sample", rot: -3, top: 4, left: 6 },
+  { src: asset("/gallery/drinkware/thermos.jpg"), alt: "Custom drinkware sample", rot: 4, top: 28, left: 50 },
+  { src: asset("/gallery/signs/4719.jpg"), alt: "Custom sign sample", rot: -2, top: 60, left: 14 },
 ];
 
 export function Hero() {

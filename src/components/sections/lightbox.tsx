@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { GalleryImage } from "../../../scripts/generate-gallery-manifest";
+import { asset } from "@/lib/asset";
 
 type Img = GalleryImage & { category: string };
 type Props = {
@@ -44,7 +45,7 @@ export function Lightbox({ images, index, onClose, onIndex }: Props) {
         className="bg-ink/95 text-paper max-w-5xl border-none p-0"
       >
         <div className="relative">
-          <img src={image.src} alt={image.alt} className="mx-auto max-h-[85vh] w-auto" />
+          <img src={asset(image.src)} alt={image.alt} className="mx-auto max-h-[85vh] w-auto" />
           <button
             type="button"
             aria-label="Previous image"
